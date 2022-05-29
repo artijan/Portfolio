@@ -1,0 +1,23 @@
+.my_carrer {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+
+  .carrer {
+    color: #b4b4b4;
+    display: flex;
+    flex-direction: column;
+
+    span {
+      font-size: 40px;
+      font-weight: 800;
+      margin-left: 250px;
+    }
+
+    .img {
+      width: 100vmax;
+      height: 100vmax;
+      background-color: whitesmoke;
+    }
+  }
+}

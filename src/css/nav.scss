@@ -1,0 +1,28 @@
+.gnb {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  height: 100vh;
+
+  .gnb_logo {
+    font-weight: 900;
+    font-size: 24px;
+    color: #e7e7e7;
+    text-align: left;
+  }
+
+  .gnb_link {
+    text-decoration: none;
+    grid-column: 4;
+    text-align: right;
+
+    .gnb_about {
+      font-size: 18px;
+      font-weight: 200;
+      color: #c9c9c9;
+    }
+  }
+}
