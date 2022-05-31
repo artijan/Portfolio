@@ -12,6 +12,7 @@ function App() {
         <div className="wrapper">
           <My />
           <Career />
+          <Career />
         </div>
       </div>
     </>

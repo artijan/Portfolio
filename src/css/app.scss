@@ -141,4 +141,9 @@ table {
 .wrapper {
   display: flex;
   flex-direction: column;
+  scroll-snap-type: y mandatory;
+}
+
+.wrapper > .scroll {
+  scroll-snap-align: center;
 }
