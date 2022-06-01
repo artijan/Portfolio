@@ -2,7 +2,7 @@ import React from "react";
 
 function My() {
   return (
-    <div className="my_container scroll">
+    <div className="my_container">
       <div className="my_wrapper">
         <div className="my_my">
           <span className="my_my-position">Contents Desinger</span>

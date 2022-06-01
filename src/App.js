@@ -9,9 +9,15 @@ function App() {
     <>
       <div className="container">
         <Nav />
-        <My />
-        <Career />
-        <Career />
+        <div className="scroll">
+          <My />
+        </div>
+        <div className="scroll">
+          <Career />
+        </div>
+        <div className="scroll">
+          <Career />
+        </div>
       </div>
     </>
   );

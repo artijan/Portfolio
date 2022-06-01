@@ -1,22 +1,12 @@
 .my_container {
+  width: 100%;
+  height: 50vh;
   margin-top: 200px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
 
   .my_wrapper {
     display: flex;
-    flex-direction: column;
     width: 100%;
-
-    .my_img {
-      width: 312px;
-      height: 312px;
-      background-color: grey;
-      border-radius: 50%;
-    }
-
     .my_my {
       display: flex;
       flex-direction: column;
@@ -37,7 +27,6 @@
 
     .my_story {
       width: 100%;
-      margin-top: 40px;
       font-weight: 600;
       font-size: 40px;
       color: #dddddd;

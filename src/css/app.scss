@@ -2,6 +2,10 @@
 @import "./my.scss";
 @import "./career.scss";
 
+html {
+  scroll-snap-type: y mandatory;
+}
+
 html,
 body,
 div,
@@ -131,17 +135,17 @@ table {
 * {
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
-  height: 100%;
 }
 
 .container {
   display: flex;
   flex-direction: column;
-  scroll-snap-type: y mandatory;
+  overflow-y: y;
+  scroll-behavior: smooth;
   width: 100%;
 
-  .container > .scroll {
-    scroll-snap-align: start;
+  .scroll {
+    scroll-snap-align: center;
     scroll-snap-stop: always;
   }
 }
