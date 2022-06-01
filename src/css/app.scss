@@ -131,19 +131,17 @@ table {
 * {
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
+  height: 100%;
 }
 
 .container {
-  display: grid;
-  grid-template-columns: 20vh auto;
-}
-
-.wrapper {
   display: flex;
   flex-direction: column;
   scroll-snap-type: y mandatory;
-}
+  width: 100%;
 
-.wrapper > .scroll {
-  scroll-snap-align: center;
+  .container > .scroll {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
 }

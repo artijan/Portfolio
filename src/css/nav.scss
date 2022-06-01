@@ -1,11 +1,9 @@
 .gnb {
   padding: 40px;
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   position: fixed;
-  height: 100vh;
 
   .gnb_logo {
     font-weight: 900;

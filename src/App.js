@@ -9,11 +9,9 @@ function App() {
     <>
       <div className="container">
         <Nav />
-        <div className="wrapper">
-          <My />
-          <Career />
-          <Career />
-        </div>
+        <My />
+        <Career />
+        <Career />
       </div>
     </>
   );
