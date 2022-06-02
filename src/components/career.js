@@ -1,11 +1,11 @@
 import React from "react";
 
-function Career() {
+function Career(props) {
   return (
     <div className="my_carrer">
       <div className="carrer">
         <div className="img">
-          <span className="text">상세이미지 디자인</span>
+          <span className="text">{props.name}</span>
         </div>
       </div>
     </div>
