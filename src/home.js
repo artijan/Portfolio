@@ -3,13 +3,13 @@ import Nav from "./components/nav";
 import My from "./components/my";
 import Career from "./components/career";
 import { Link } from "react-router-dom";
+import Box from "./components/box";
 
 function Home() {
   return (
     <>
       <div className="container">
         <Nav />
-
         <div className="scroll">
           <My />
         </div>

@@ -1,8 +1,19 @@
-import React from "react";
+import React, { Suspense } from "react";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
+import Box from "./box";
 
 function My() {
   return (
     <div className="my_container">
+      <Canvas className="canvas">
+        <OrbitControls enableZoom={false} />
+        <ambientLight intensity={0.5} />
+        <directionalLight intensity={1} position={[-2, 5, 2]} />
+        <Suspense fallback={null}>
+          <Box />
+        </Suspense>
+      </Canvas>
       <div className="my_wrapper">
         <div className="my_my">
           <span className="my_my-position">Contents Desinger</span>
