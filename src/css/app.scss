@@ -110,7 +110,6 @@ section {
 }
 body {
   line-height: 1;
-  background-color: #1b1b1b;
 }
 ol,
 ul {
@@ -147,5 +146,8 @@ table {
   .scroll {
     scroll-snap-align: center;
     scroll-snap-stop: always;
+  }
+  .my {
+    background-color: #8a37cf;
   }
 }

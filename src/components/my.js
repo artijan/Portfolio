@@ -2,6 +2,7 @@ import React, { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import Box from "./box";
+import AniSphere from "./sphere";
 
 function My() {
   return (
@@ -9,9 +10,9 @@ function My() {
       <Canvas className="canvas">
         <OrbitControls enableZoom={false} />
         <ambientLight intensity={0.5} />
-        <directionalLight intensity={1} position={[-2, 5, 2]} />
+        <spotLight intensity={2} position={[-3, 10, 7]} />
         <Suspense fallback={null}>
-          <Box />
+          <AniSphere />
         </Suspense>
       </Canvas>
       <div className="my_wrapper">

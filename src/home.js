@@ -10,7 +10,7 @@ function Home() {
     <>
       <div className="container">
         <Nav />
-        <div className="scroll">
+        <div className="scroll my">
           <My />
         </div>
         <Link to="/detail">
