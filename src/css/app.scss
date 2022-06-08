@@ -4,6 +4,7 @@
 
 html {
   scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
 }
 
 html,
@@ -139,13 +140,13 @@ table {
 .container {
   display: flex;
   flex-direction: column;
-  scroll-behavior: smooth;
 
   .scroll {
     scroll-snap-align: center;
     scroll-snap-stop: always;
   }
   .my {
-    background-color: #dec3fa;
+    background-color: #29173f;
+    z-index: 0;
   }
 }
