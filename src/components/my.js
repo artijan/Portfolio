@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import React, { Suspense } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { OrbitControls, Text } from "@react-three/drei";
+import { Text } from "@react-three/drei";
 import AniSphere from "./sphere";
 
 function My() {
@@ -10,10 +10,15 @@ function My() {
       <Canvas
         className="canvas"
         dpr={[1, 2]}
-        camera={{ position: [0, 0, 15], fov: 22 }}
+        camera={{
+          position: [0, 0, 10],
+          fov: 22,
+          near: 0.1,
+          far: 1000,
+        }}
       >
         <ambientLight intensity={0.5} />
-        <directionalLight intensity={0.5} position={[30, -50, 3]} />
+        <directionalLight intensity={0.8} position={[30, -50, 1]} />
         <rectAreaLight
           width={9}
           height={9}
@@ -22,18 +27,33 @@ function My() {
         />
         <Suspense fallback={null}>
           <Caption
-            color="#5F3DB4"
+            color="#A53CB9"
             position={[-0.5, 0, 2]}
             lineHeight="1"
             fontSize="12"
           >{`CONTENTS\nDESIGNER`}</Caption>
           <Caption
-            color="#5F3DB4"
+            color="#A53CB9"
             position={[-0.5, -0.8, 2]}
             lineHeight="1"
             fontSize="50"
           >{`Jang Ho Seung`}</Caption>
-          <AniSphere />
+          <AniSphere
+            color="#6254C6"
+            args={[1, 100, 300]}
+            scale="4"
+            position={[-4, 0, -3]}
+            distort={0.5}
+            speed={2}
+          />
+          <AniSphere
+            color="#4F9593"
+            args={[1, 100, 100]}
+            scale="0.3"
+            position={[3, -2, -6]}
+            distort={0.6}
+            speed={5}
+          />
           <Rig />
         </Suspense>
       </Canvas>

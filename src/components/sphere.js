@@ -1,14 +1,21 @@
 import React from "react";
 import { MeshDistortMaterial, Sphere } from "@react-three/drei";
 
-export default function AniSphere() {
+export default function AniSphere({
+  color,
+  args,
+  scale,
+  position,
+  distort,
+  speed,
+}) {
   return (
-    <Sphere args={[1, 100, 300]} scale={4} position={[-3.5, 0, -3]}>
+    <Sphere args={args} scale={scale} position={position}>
       <MeshDistortMaterial
-        color="#6254C6"
+        color={color}
         attach="material"
-        distort={0.5}
-        speed={2}
+        distort={distort}
+        speed={speed}
         roughness={0.5}
       />
     </Sphere>
