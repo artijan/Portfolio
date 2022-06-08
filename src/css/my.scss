@@ -1,7 +1,6 @@
 .my_container {
   width: 100%;
-  height: 50vh;
-  margin: 100px 0;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,8 +13,6 @@
       display: flex;
       flex-direction: column;
       margin-bottom: 24px;
-      width: 100%;
-      color: #dddddd;
 
       .my_my-name {
         font-weight: 600;
@@ -23,16 +20,17 @@
         margin-bottom: 8px;
       }
       .my_my-position {
-        font-size: 80px;
-        font-weight: 200;
+        color: #694fa4;
+        font-size: 120px;
+        font-weight: 900;
       }
     }
 
     .my_story {
       width: 100%;
-      font-weight: 600;
+      font-weight: 300;
       font-size: 40px;
-      color: #dddddd;
+      color: #694a7e;
     }
   }
 }

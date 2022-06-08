@@ -1,7 +1,6 @@
 .my_carrer {
   display: flex;
   flex-direction: column;
-  width: 100%;
 
   .carrer {
     color: #b4b4b4;
@@ -9,7 +8,6 @@
     flex-direction: column;
 
     .img {
-      width: 100vw;
       height: 100vh;
       background-color: whitesmoke;
       display: flex;

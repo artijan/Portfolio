@@ -139,15 +139,13 @@ table {
 .container {
   display: flex;
   flex-direction: column;
-  overflow-y: y;
   scroll-behavior: smooth;
-  width: 100%;
 
   .scroll {
     scroll-snap-align: center;
     scroll-snap-stop: always;
   }
   .my {
-    background-color: #8a37cf;
+    background-color: #dec3fa;
   }
 }

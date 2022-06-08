@@ -9,23 +9,23 @@ function My() {
     <div className="my_container">
       <Canvas className="canvas">
         <OrbitControls enableZoom={false} />
-        <ambientLight intensity={0.5} />
-        <spotLight intensity={2} position={[-3, 10, 7]} />
+        <ambientLight intensity={0.6} />
+        {/* <directionalLight intensity={4} position={[-5, 8, 1]} /> */}
+        <rectAreaLight
+          width={800}
+          height={800}
+          intensity={5}
+          position={[30, 10, 2]}
+        />
         <Suspense fallback={null}>
           <AniSphere />
         </Suspense>
       </Canvas>
       <div className="my_wrapper">
         <div className="my_my">
-          <span className="my_my-position">Contents Desinger</span>
+          <span className="my_my-position">CONTENTS DESIGNER</span>
         </div>
-        <div className="my_story">
-          테에에에에에에스스스스스스스트트트 <br />
-          테에에에에에ㅔ에에스스스스스트트트 <br />
-          테에에에에에에에에스스스스트트트틑 <br />
-          테에에에에에에에에스스스스트트트틑 <br />
-          테에에에에에에에에스스스스트트트틑 <br />
-        </div>
+        <div className="my_story">TEST</div>
       </div>
     </div>
   );
