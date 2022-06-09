@@ -3,6 +3,7 @@ import React, { Suspense } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Text } from "@react-three/drei";
 import AniSphere from "./sphere";
+import { DepthOfField, EffectComposer } from "@react-three/postprocessing";
 
 function My() {
   return (
@@ -13,11 +14,13 @@ function My() {
         camera={{
           position: [0, 0, 10],
           fov: 22,
-          near: 0.1,
-          far: 1000,
         }}
       >
+        <EffectComposer>
+          <DepthOfField focusDistance={0.5} focalLength={0.5} bokehScale={3} />
+        </EffectComposer>
         <ambientLight intensity={0.5} />
+
         <directionalLight intensity={0.8} position={[30, -50, 1]} />
         <rectAreaLight
           width={9}
@@ -34,7 +37,7 @@ function My() {
           >{`CONTENTS\nDESIGNER`}</Caption>
           <Caption
             color="#A53CB9"
-            position={[-0.5, -0.8, 2]}
+            position={[-0.5, -0.8, 5]}
             lineHeight="1"
             fontSize="50"
           >{`Jang Ho Seung`}</Caption>
