@@ -5,10 +5,10 @@ import { DepthOfField, EffectComposer } from "@react-three/postprocessing";
 import Caption from "./caption";
 import Rig from "./rig";
 
-function Career({ name }) {
+function Career2({ name }) {
   return (
     <div className="my_carrer">
-      <div className="carrer first">
+      <div className="carrer">
         <Canvas
           className="canvas"
           dpr={[1, 2]}
@@ -30,25 +30,44 @@ function Career({ name }) {
           <rectAreaLight
             width={9}
             height={9}
-            intensity={1}
-            position={[1, 5, 2]}
+            intensity={3}
+            position={[5, 5, 3]}
           />
           <Suspense fallback={null}>
             <Caption
               className="caption"
-              color="#403361"
-              position={[-1, 0, 1]}
+              color="#A53CB9"
+              position={[0, 0, 1]}
               lineHeight="1"
-              fontSize="16"
+              fontSize="12"
             >
               {`${name}`}
             </Caption>
+            <AniSphere
+              color="#6254C6"
+              args={[1, 100, 300]}
+              scale="4"
+              position={[-4, 3, -5]}
+              distort={0.5}
+              speed={2}
+            />
+            <AniSphere
+              color="#4F9593"
+              args={[1, 100, 100]}
+              scale="0.3"
+              position={[3, -2, -8]}
+              distort={0.6}
+              speed={5}
+            />
             <Rig />
           </Suspense>
         </Canvas>
+        {/* <div className="img">
+          <span className="text">{props.name}</span>
+        </div> */}
       </div>
     </div>
   );
 }
 
-export default Career;
+export default Career2;

@@ -1,9 +1,9 @@
-import * as THREE from "three";
 import React, { Suspense } from "react";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Text } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
 import AniSphere from "./sphere";
 import { DepthOfField, EffectComposer } from "@react-three/postprocessing";
+import Caption from "./caption";
+import Rig from "./rig";
 
 function My() {
   return (
@@ -17,7 +17,11 @@ function My() {
         }}
       >
         <EffectComposer>
-          <DepthOfField focusDistance={0.5} focalLength={0.5} bokehScale={3} />
+          <DepthOfField
+            focusDistance={0.009}
+            focalLength={0.005}
+            bokehScale={1}
+          />
         </EffectComposer>
         <ambientLight intensity={0.5} />
 
@@ -31,21 +35,21 @@ function My() {
         <Suspense fallback={null}>
           <Caption
             color="#A53CB9"
-            position={[-0.5, 0, 2]}
+            position={[-0.5, 0.2, 1]}
             lineHeight="1"
             fontSize="12"
-          >{`CONTENTS\nDESIGNER`}</Caption>
+          >{`I'M CONTENTS DESIGNER`}</Caption>
           <Caption
             color="#A53CB9"
-            position={[-0.5, -0.8, 5]}
+            position={[-0.5, -1, 1]}
             lineHeight="1"
             fontSize="50"
-          >{`Jang Ho Seung`}</Caption>
+          >{`Scroll Down`}</Caption>
           <AniSphere
             color="#6254C6"
             args={[1, 100, 300]}
             scale="4"
-            position={[-4, 0, -3]}
+            position={[-4, 3, -5]}
             distort={0.5}
             speed={2}
           />
@@ -53,7 +57,7 @@ function My() {
             color="#4F9593"
             args={[1, 100, 100]}
             scale="0.3"
-            position={[3, -2, -6]}
+            position={[3, -2, -8]}
             distort={0.6}
             speed={5}
           />
@@ -68,33 +72,6 @@ function My() {
       </div> */}
     </div>
   );
-}
-
-function Caption({ children, position, lineHeight, fontSize, color }) {
-  const { width } = useThree((state) => state.viewport);
-  return (
-    <Text
-      color={color}
-      position={position}
-      lineHeight={lineHeight}
-      fontSize={width / fontSize}
-      material-toneMapped={true}
-      anchorX="left"
-      anchorY="middle"
-    >
-      <meshPhysicalMaterial attach="material" />
-      {children}
-    </Text>
-  );
-}
-
-function Rig({ v = new THREE.Vector3() }) {
-  return useFrame((state) => {
-    state.camera.position.lerp(
-      v.set(state.mouse.x / 2, state.mouse.y / 2, 10),
-      0.05
-    );
-  });
 }
 
 export default My;
