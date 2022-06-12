@@ -14,6 +14,7 @@ function Home() {
         <div className="scroll my">
           <My />
         </div>
+
         <Link to="/detail">
           <div className="scroll">
             <Career name="Product Information Design" />

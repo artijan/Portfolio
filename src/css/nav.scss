@@ -7,15 +7,19 @@
   position: fixed;
   z-index: 1;
 
+  .link {
+    text-decoration: none;
+  }
+
   .gnb_logo {
     font-weight: 900;
     font-size: 24px;
     color: #e7e7e7;
     text-align: left;
+    text-decoration: none;
   }
 
   .gnb_link {
-    text-decoration: none;
     grid-column: 4;
     text-align: right;
 
