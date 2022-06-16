@@ -12,8 +12,9 @@ export default function AniSphere({
   return (
     <Sphere args={args} scale={scale} position={position}>
       <MeshDistortMaterial
-        color={color}
+        wireframe
         attach="material"
+        color={color}
         distort={distort}
         speed={speed}
         roughness={0.5}

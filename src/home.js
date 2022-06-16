@@ -16,17 +16,17 @@ function Home() {
         </div>
 
         <Link to="/detail">
-          <div className="scroll detail">
+          <div className="scroll detail ">
             <Career name="Product Information Design" />
           </div>
         </Link>
         <Link to="/guide">
-          <div className="scroll guide">
+          <div className="scroll guide ">
             <Career2 name="Shopping Guide Design" />
           </div>
         </Link>
         <Link to="/shopping">
-          <div className="scroll shopping">
+          <div className="scroll shopping ">
             <Career3 name="Event Page Design" />
           </div>
         </Link>
