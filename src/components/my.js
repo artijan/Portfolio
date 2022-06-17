@@ -11,6 +11,7 @@ import { BlendFunction } from "postprocessing";
 import Caption from "./caption";
 import Rig from "./rig";
 import Bg from "./bg";
+import Stars from "./stars";
 
 function My() {
   return (
@@ -24,7 +25,6 @@ function My() {
           fov: 22,
         }}
       >
-        <Bg />
         <EffectComposer>
           <Vignette eskil={false} offset={0.5} darkness={0.5} />
           <Noise premultiply blendFunction={BlendFunction.ADD} />
@@ -61,7 +61,7 @@ function My() {
             scale="4"
             position={[-4, 3, -5]}
             distort={0.5}
-            speed={2}
+            speed={1}
           />
           <AniSphere
             color="#4F9593"
@@ -73,6 +73,8 @@ function My() {
           />
           <Rig />
         </Suspense>
+        <Stars />
+        <Bg />
       </Canvas>
       <span className="chevron">
         Scroll Down
