@@ -18,13 +18,11 @@ function My() {
     <div className="my_container">
       <Canvas
         className="canvas"
-        shadows
-        dpr={[1, 2]}
         camera={{
-          position: [0, 0, 10],
-          fov: 22,
+          position: [0, 0, 1],
         }}
       >
+        <Stars />
         <EffectComposer>
           <Vignette eskil={false} offset={0.5} darkness={0.5} />
           <Noise premultiply blendFunction={BlendFunction.ADD} />
@@ -42,24 +40,20 @@ function My() {
           intensity={3}
           position={[5, 5, 3]}
         />
+
         <Suspense fallback={null}>
           <Caption
             color="#A53CB9"
-            position={[-0.5, 0.2, 1]}
+            position={[0, 0, 0]}
             lineHeight="1"
-            fontSize="12"
+            fontSize="1.2"
           >{`I'M CONTENTS DESIGNER`}</Caption>
-          {/* <Caption
-            color="#A53CB9"
-            position={[-0.5, -1, 1]}
-            lineHeight="1"
-            fontSize="50"
-          >{`Scroll Down`}</Caption> */}
+
           <AniSphere
             color="#6254C6"
             args={[1, 100, 300]}
             scale="4"
-            position={[-4, 3, -5]}
+            position={[-5, 3, -5]}
             distort={0.5}
             speed={1}
           />
@@ -73,7 +67,7 @@ function My() {
           />
           <Rig />
         </Suspense>
-        <Stars />
+
         <Bg />
       </Canvas>
       <span className="chevron">
