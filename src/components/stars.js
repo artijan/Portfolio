@@ -6,27 +6,27 @@ import { PointMaterial, Points } from "@react-three/drei";
 export default function Stars(props) {
   const ref = useRef();
   const [sphere] = useState(() =>
-    random.inSphere(new Float32Array(5000), { radius: 1.5 })
+    random.inSphere(new Float32Array(4000), { radius: 7 })
   );
 
   useFrame((state, delta) => {
-    ref.current.rotation.x -= delta / 10;
-    ref.current.rotation.y -= delta / 20;
+    ref.current.rotation.x -= delta / 15;
+    ref.current.rotation.y -= delta / 30;
   });
 
   return (
-    <group rotation={[0, 0, Math.PI / 4]}>
+    <group rotation={[2, Math.PI / 2, Math.PI / 8]}>
       <Points
         ref={ref}
         positions={sphere}
-        stride={10}
+        stride={4}
         frustumCulled={false}
         {...props}
       >
         <PointMaterial
           transparent
-          color="#ffa0e0"
-          size={0.05}
+          color="#FFF1A0"
+          size={0.02}
           sizeAttenuation={true}
           depthWrite={false}
         />

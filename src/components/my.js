@@ -19,10 +19,10 @@ function My() {
       <Canvas
         className="canvas"
         camera={{
-          position: [0, 0, 1],
+          position: [0, 0, 10],
+          fov: "22",
         }}
       >
-        <Stars />
         <EffectComposer>
           <Vignette eskil={false} offset={0.5} darkness={0.5} />
           <Noise premultiply blendFunction={BlendFunction.ADD} />
@@ -32,8 +32,8 @@ function My() {
             bokehScale={1}
           />
         </EffectComposer>
-        <ambientLight intensity={0.5} />
-        <directionalLight intensity={0.8} position={[30, -50, 1]} />
+        <ambientLight intensity={0.1} />
+        <directionalLight intensity={0.2} position={[30, -50, 1]} />
         <rectAreaLight
           width={9}
           height={9}
@@ -46,7 +46,7 @@ function My() {
             color="#A53CB9"
             position={[0, 0, 0]}
             lineHeight="1"
-            fontSize="1.2"
+            fontSize="10"
           >{`I'M CONTENTS DESIGNER`}</Caption>
 
           <AniSphere
@@ -61,13 +61,13 @@ function My() {
             color="#4F9593"
             args={[1, 100, 100]}
             scale="0.3"
-            position={[3, -2, -8]}
+            position={[3, 2, -8]}
             distort={0.6}
             speed={5}
           />
           <Rig />
         </Suspense>
-
+        <Stars />
         <Bg />
       </Canvas>
       <span className="chevron">

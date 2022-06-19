@@ -9,7 +9,7 @@ export default function Bg() {
       <LayerMaterial attach="material" side={THREE.BackSide}>
         <Depth
           colorA="#30cfd0"
-          colorB="#330867"
+          colorB="#200640"
           alpha={1}
           mode="normal"
           near={5}
