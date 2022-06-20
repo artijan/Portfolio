@@ -44,7 +44,7 @@ function My() {
         <Suspense fallback={null}>
           <Caption
             color="#A53CB9"
-            position={[0, 0, 0]}
+            position={[-1, 0, 0]}
             lineHeight="1"
             fontSize="10"
           >{`I'M CONTENTS DESIGNER`}</Caption>
@@ -64,6 +64,14 @@ function My() {
             position={[3, 2, -8]}
             distort={0.6}
             speed={5}
+          />
+          <AniSphere
+            color="#DC4C59"
+            args={[1, 100, 100]}
+            scale="1"
+            position={[4, -2, -1]}
+            distort={1}
+            speed={2}
           />
           <Rig />
         </Suspense>

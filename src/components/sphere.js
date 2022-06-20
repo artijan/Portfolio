@@ -10,7 +10,7 @@ export default function AniSphere({
   speed,
 }) {
   return (
-    <Sphere args={args} scale={scale} position={position}>
+    <Sphere args={args} scale={scale} position={position} rotation={[1, 1, 1]}>
       <MeshDistortMaterial
         attach="material"
         color={color}
