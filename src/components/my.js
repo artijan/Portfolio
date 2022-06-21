@@ -56,6 +56,7 @@ function My() {
             position={[-5, 3, -5]}
             distort={0.5}
             speed={1}
+            roughness={0.5}
           />
           <AniSphere
             color="#4F9593"
@@ -64,6 +65,7 @@ function My() {
             position={[3, 2, -8]}
             distort={0.6}
             speed={5}
+            roughness={0.2}
           />
           <AniSphere
             color="#DC4C59"
@@ -72,6 +74,16 @@ function My() {
             position={[4, -2, -1]}
             distort={1}
             speed={2}
+            roughness={0.8}
+          />
+          <AniSphere
+            color="#7E61DF"
+            args={[1, 100, 100]}
+            scale="0.2"
+            position={[-2, 0, -1]}
+            distort={0.3}
+            speed={6}
+            roughness={0.3}
           />
           <Rig />
         </Suspense>

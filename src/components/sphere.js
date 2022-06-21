@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
 import { MeshDistortMaterial, Sphere } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
 
 export default function AniSphere({
   color,
@@ -8,15 +9,22 @@ export default function AniSphere({
   position,
   distort,
   speed,
+  roughness,
 }) {
+  const ref = useRef();
+
+  useFrame((state, delta) => {
+    ref.current.rotation.y += 0.01;
+  });
+
   return (
-    <Sphere args={args} scale={scale} position={position} rotation={[1, 1, 1]}>
+    <Sphere ref={ref} args={args} scale={scale} position={position}>
       <MeshDistortMaterial
         attach="material"
         color={color}
         distort={distort}
         speed={speed}
-        roughness={0.5}
+        roughness={roughness}
       />
     </Sphere>
   );
