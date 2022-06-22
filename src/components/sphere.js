@@ -14,7 +14,8 @@ export default function AniSphere({
   const ref = useRef();
 
   useFrame((state, delta) => {
-    ref.current.rotation.y += 0.01;
+    ref.current.rotation.y = delta / 2;
+    ref.current.rotation.x = delta / 2;
   });
 
   return (
