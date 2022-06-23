@@ -25,7 +25,7 @@ export default function Stars(props) {
       >
         <PointMaterial
           transparent
-          color="#FFF1A0"
+          color="#6196DF"
           size={0.02}
           sizeAttenuation={true}
           depthWrite={false}
