@@ -2,7 +2,7 @@ import React, { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import Caption from "./caption";
 import Rig from "./rig";
-import FBX from "./fbx";
+import Boxes from "./box";
 
 function Career({ name }) {
   return (
@@ -25,7 +25,12 @@ function Career({ name }) {
             position={[1, 5, 2]}
           />
           <Suspense fallback={null}>
-            <FBX />
+            <Boxes
+              color="#6254C6"
+              args={[1, 1, 1]}
+              scale="3"
+              position={[0, 0, -3]}
+            />
             <Caption
               className="caption"
               color="#403361"

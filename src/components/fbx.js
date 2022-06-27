@@ -1,7 +1,9 @@
 import React from "react";
 import { useFBX } from "@react-three/drei";
 
-export default function FBX() {
-  const fbx = useFBX("fbx/test.fbx");
-  return <primitive object={fbx} position={[0, 0, 0]} scale={0.5} />;
-}
+const FBX = () => {
+  const fbx = useFBX("fbx/square.fbx");
+  return <primitive object={fbx} scale={0.5} />;
+};
+
+export default FBX;

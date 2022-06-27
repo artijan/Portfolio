@@ -12,6 +12,7 @@ import Caption from "./caption";
 import Rig from "./rig";
 import Bg from "./bg";
 import Stars from "./stars";
+import FBX from "./fbx";
 
 function My() {
   const ref = useRef();
