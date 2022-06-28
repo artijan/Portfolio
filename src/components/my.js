@@ -1,5 +1,5 @@
-import React, { Suspense, useRef } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import React, { Suspense } from "react";
+import { Canvas } from "@react-three/fiber";
 import AniSphere from "./sphere";
 import {
   DepthOfField,
@@ -12,11 +12,8 @@ import Caption from "./caption";
 import Rig from "./rig";
 import Bg from "./bg";
 import Stars from "./stars";
-import FBX from "./fbx";
 
 function My() {
-  const ref = useRef();
-
   return (
     <div className="my_container">
       <Canvas

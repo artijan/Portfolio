@@ -3,6 +3,7 @@ import { Canvas } from "@react-three/fiber";
 import Caption from "./caption";
 import Rig from "./rig";
 import Boxes from "./box";
+import Models from "./model";
 
 function Career({ name }) {
   return (
@@ -25,6 +26,7 @@ function Career({ name }) {
             position={[1, 5, 2]}
           />
           <Suspense fallback={null}>
+            <Models />
             <Boxes
               color="#6254C6"
               args={[1, 1, 1]}
