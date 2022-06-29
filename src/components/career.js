@@ -26,12 +26,13 @@ function Career({ name }) {
             position={[1, 5, 2]}
           />
           <Suspense fallback={null}>
-            <Models />
+            <Models scale="0.7" position={[3, 1, -3]} />
             <Boxes
               color="#6254C6"
-              args={[1, 1, 1]}
-              scale="3"
-              position={[0, 0, -3]}
+              args={[1, 3, 1]}
+              scale="1"
+              position={[-3, 1, -5]}
+              rotation={[1, 1, 3]}
             />
             <Caption
               className="caption"
