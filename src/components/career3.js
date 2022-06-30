@@ -7,7 +7,7 @@ import Rig from "./rig";
 function Career3({ name }) {
   return (
     <div className="my_carrer">
-      <div className="carrer first">
+      <div className="carrer third">
         <Canvas
           className="canvas"
           dpr={[1, 2]}
@@ -27,7 +27,7 @@ function Career3({ name }) {
           <Suspense fallback={null}>
             <Caption
               className="caption"
-              color="#403361"
+              color="#7AA7C7"
               position={[-1, 0, 1]}
               lineHeight="1"
               fontSize="16"

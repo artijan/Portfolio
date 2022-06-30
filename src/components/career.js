@@ -4,6 +4,8 @@ import Caption from "./caption";
 import Rig from "./rig";
 import Boxes from "./box";
 import Models from "./model";
+import { EffectComposer, Noise } from "@react-three/postprocessing";
+import { BlendFunction } from "postprocessing";
 
 function Career({ name }) {
   return (
@@ -17,6 +19,10 @@ function Career({ name }) {
             fov: 22,
           }}
         >
+          <EffectComposer>
+            <Noise premultiply blendFunction={BlendFunction.ADD} />
+          </EffectComposer>
+
           <ambientLight intensity={0.5} />
           <directionalLight intensity={0.8} position={[30, -50, 1]} />
           <rectAreaLight
@@ -26,7 +32,7 @@ function Career({ name }) {
             position={[1, 5, 2]}
           />
           <Suspense fallback={null}>
-            <Models scale="0.7" position={[3, 1, -3]} />
+            <Models url="cube" scale="0.7" position={[3, 1, -3]} />
             <Boxes
               color="#6254C6"
               args={[1, 3, 1]}
