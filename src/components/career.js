@@ -4,12 +4,10 @@ import Caption from "./caption";
 import Rig from "./rig";
 import Boxes from "./box";
 import Models from "./model";
-import { EffectComposer, Noise } from "@react-three/postprocessing";
-import { BlendFunction } from "postprocessing";
 
 function Career({ name }) {
   return (
-    <div className="my_carrer">
+    <div id="work" className="my_carrer">
       <div className="carrer first">
         <Canvas
           className="canvas"
@@ -19,10 +17,6 @@ function Career({ name }) {
             fov: 22,
           }}
         >
-          <EffectComposer>
-            <Noise premultiply blendFunction={BlendFunction.ADD} />
-          </EffectComposer>
-
           <ambientLight intensity={0.5} />
           <directionalLight intensity={0.8} position={[30, -50, 1]} />
           <rectAreaLight
@@ -49,8 +43,8 @@ function Career({ name }) {
             >
               {`${name}`}
             </Caption>
-            <Rig />
           </Suspense>
+          <Rig />
         </Canvas>
       </div>
     </div>

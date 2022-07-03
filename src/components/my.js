@@ -47,7 +47,7 @@ function My() {
             position={[-1, 0, 0]}
             lineHeight="1"
             fontSize="10"
-          >{`I'M CONTENTS DESIGNER`}</Caption>
+          >{`CONTENTS DESIGNER`}</Caption>
 
           <AniSphere
             color="#6254C6"
@@ -91,7 +91,7 @@ function My() {
         <Bg />
       </Canvas>
       <span className="chevron">
-        Scroll Down
+        My Works Here!
         <span>&#129147;</span>
       </span>
     </div>
