@@ -37,8 +37,8 @@ function My() {
         <rectAreaLight
           width={9}
           height={9}
-          intensity={3}
-          position={[5, 5, 3]}
+          intensity={5}
+          position={[5, 7, 3]}
         />
 
         <Suspense fallback={null}>
@@ -46,8 +46,8 @@ function My() {
             color="#A53CB9"
             position={[-1, 0, 0]}
             lineHeight="1"
-            fontSize="10"
-          >{`CONTENTS DESIGNER`}</Caption>
+            fontSize="8"
+          >{`HELLO WORLD!`}</Caption>
 
           <AniSphere
             color="#6254C6"

@@ -6,7 +6,7 @@ import Rig from "./rig";
 
 function Career3({ name }) {
   return (
-    <div className="my_carrer">
+    <div id="work3" className="my_carrer">
       <div className="carrer third">
         <Canvas
           className="canvas"

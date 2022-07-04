@@ -7,7 +7,7 @@ import Boxes from "./box";
 
 function Career2({ name }) {
   return (
-    <div className="my_carrer">
+    <div id="work2" className="my_carrer">
       <div className="carrer second">
         <Canvas
           className="canvas"

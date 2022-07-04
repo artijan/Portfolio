@@ -7,7 +7,7 @@ import Models from "./model";
 
 function Career({ name }) {
   return (
-    <div id="work" className="my_carrer">
+    <div id="work1" className="my_carrer">
       <div className="carrer first">
         <Canvas
           className="canvas"

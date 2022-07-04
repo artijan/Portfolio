@@ -5,12 +5,14 @@ import { Link } from "react-router-dom";
 import Career from "./components/career";
 import Career2 from "./components/carrer2";
 import Career3 from "./components/career3";
+import SideNav from "./components/sideNav";
 
 function Home() {
   return (
     <>
       <div className="container">
         <Nav />
+        <SideNav />
         <div className="scroll my">
           <My />
         </div>
