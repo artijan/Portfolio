@@ -1,5 +1,5 @@
-import React, { Suspense } from "react";
-import { Canvas } from "@react-three/fiber";
+import React, { Suspense, useRef } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
 import AniSphere from "./sphere";
 import {
   DepthOfField,
@@ -14,6 +14,10 @@ import Bg from "./bg";
 import Stars from "./stars";
 
 function My() {
+  const ref = useRef();
+
+  console.log(ref);
+
   return (
     <div className="my_container">
       <Canvas
@@ -35,6 +39,7 @@ function My() {
         <ambientLight intensity={0.1} />
         <directionalLight intensity={0.2} position={[30, -50, 1]} />
         <rectAreaLight
+          ref={ref}
           width={9}
           height={9}
           intensity={5}
@@ -104,11 +109,11 @@ function My() {
             roughness={0.3}
           />
           <AniSphere
-            color="#7E61DF"
-            args={[1, 100, 100]}
+            color="#DA4242"
+            args={[1, 100, 200]}
             scale="0.5"
-            position={[-3, -1, -1]}
-            distort={0.3}
+            position={[-3, -0.5, -1]}
+            distort={0.2}
             speed={6}
             roughness={0.3}
           />
