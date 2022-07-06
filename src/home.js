@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import Nav from "./components/nav";
 import My from "./components/my";
 import { Link } from "react-router-dom";
@@ -8,9 +8,17 @@ import Career3 from "./components/career3";
 import SideNav from "./components/sideNav";
 
 function Home() {
+  const scrollContainer = useRef();
+
+  console.log(scrollContainer);
+  function wheelEvent(e) {
+    e.preventDefault();
+    scrollContainer.current.scrollLeft += e.deltaY;
+  }
+
   return (
     <>
-      <div className="container">
+      <div ref={scrollContainer} onWheel={wheelEvent} className="container">
         <Nav />
         <SideNav />
         <div className="scroll my">

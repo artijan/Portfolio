@@ -117,7 +117,7 @@ function My() {
             args={[3, 100, 200]}
             scale="0.2"
             position={[-3, -0.5, -1]}
-            distort={0.2}
+            distort={0.3}
             speed={6}
             roughness={0.3}
           />
