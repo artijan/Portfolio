@@ -26,6 +26,7 @@ export default function AniSphere({
         distort={distort}
         speed={speed}
         roughness={roughness}
+        transparent="1"
       />
     </Sphere>
   );

@@ -1,5 +1,5 @@
-import React, { Suspense, useRef } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import React, { Suspense } from "react";
+import { Canvas } from "@react-three/fiber";
 import AniSphere from "./sphere";
 import {
   DepthOfField,
@@ -14,10 +14,6 @@ import Bg from "./bg";
 import Stars from "./stars";
 
 function My() {
-  const ref = useRef();
-
-  console.log(ref);
-
   return (
     <div className="my_container">
       <Canvas
@@ -37,9 +33,8 @@ function My() {
           />
         </EffectComposer>
         <ambientLight intensity={0.1} />
-        <directionalLight intensity={0.2} position={[30, -50, 1]} />
+        {/* <directionalLight intensity={0.1} position={[30, -15, 5]} /> */}
         <rectAreaLight
-          ref={ref}
           width={9}
           height={9}
           intensity={5}
@@ -52,14 +47,14 @@ function My() {
             position={[-1, 0, 0]}
             lineHeight="1"
             fontSize="12"
-          >{`HI THERE!`}</Caption>
+          >{`HELLO WORLD!`}</Caption>
 
           <AniSphere
             color="#6254C6"
             args={[1, 100, 300]}
             scale="4"
             position={[-5, 3, -5]}
-            distort={0.5}
+            distort={0.6}
             speed={1}
             roughness={0.5}
           />
@@ -100,6 +95,15 @@ function My() {
             roughness={0.8}
           />
           <AniSphere
+            color="#866E36"
+            args={[3, 100, 100]}
+            scale="1.2"
+            position={[6, -2, -30]}
+            distort={0.4}
+            speed={1}
+            roughness={0.4}
+          />
+          <AniSphere
             color="#7E61DF"
             args={[1, 100, 100]}
             scale="0.2"
@@ -110,8 +114,8 @@ function My() {
           />
           <AniSphere
             color="#DA4242"
-            args={[1, 100, 200]}
-            scale="0.5"
+            args={[3, 100, 200]}
+            scale="0.2"
             position={[-3, -0.5, -1]}
             distort={0.2}
             speed={6}
