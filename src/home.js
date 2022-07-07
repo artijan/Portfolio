@@ -10,10 +10,9 @@ import SideNav from "./components/sideNav";
 function Home() {
   const scrollContainer = useRef();
 
-  console.log(scrollContainer.current);
   const wheelEvent = (e) => {
     e.preventDefault();
-    scrollContainer.current.scrollLeft += e.deltaY;
+    scrollContainer.current.scrollLeft += e.deltaY * 20;
   };
 
   return (
