@@ -2,9 +2,6 @@
 @import "./my.scss";
 @import "./career.scss";
 
-html {
-  scroll-behavior: smooth;
-}
 ::-webkit-scrollbar {
   width: 1vw;
 }
@@ -146,8 +143,9 @@ table {
 .container {
   display: flex;
   flex-direction: row;
-  overflow: overlay;
-  scroll-snap-type: x mandatory;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  // scroll-snap-type: x mandatory;
 
   .scroll {
     scroll-snap-align: center;

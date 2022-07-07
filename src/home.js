@@ -9,10 +9,25 @@ import SideNav from "./components/sideNav";
 
 function Home() {
   const scrollContainer = useRef();
+  let scrollCount = 0;
+  let scrollMove = 0;
+
+  console.log(scrollContainer);
 
   const wheelEvent = (e) => {
     e.preventDefault();
-    scrollContainer.current.scrollLeft += e.deltaY * 20;
+    if (e.deltaY > 0) {
+      scrollContainer.current.scrollLeft += window.outerWidth;
+      if (scrollCount >= 0 && scrollCount <= 2) {
+        scrollCount++;
+      }
+    } else {
+      scrollContainer.current.scrollLeft -= window.outerWidth;
+      if (scrollCount > 0 && scrollCount <= 3) {
+        scrollCount--;
+      }
+    }
+    console.log(scrollCount);
   };
 
   return (

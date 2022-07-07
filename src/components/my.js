@@ -14,13 +14,6 @@ import Bg from "./bg";
 import Stars from "./stars";
 
 function My() {
-  const ref = useRef();
-
-  useFrame((state, delta) => {
-    ref.current.rotation.y += 0.01;
-    ref.current.rotation.x += 0.005;
-  });
-
   return (
     <div className="my_container">
       <Canvas
@@ -39,7 +32,7 @@ function My() {
             bokehScale={1}
           />
         </EffectComposer>
-        <ambientLight ref={ref} intensity={0.1} />
+        <ambientLight intensity={0.1} />
         {/* <directionalLight intensity={0.1} position={[30, -15, 5]} /> */}
         <rectAreaLight
           width={9}
