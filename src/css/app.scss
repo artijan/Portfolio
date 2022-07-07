@@ -3,7 +3,7 @@
 @import "./career.scss";
 
 html {
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   overflow: overlay;
 }
@@ -147,7 +147,7 @@ table {
 
 .container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 
   .scroll {
     scroll-snap-align: center;
