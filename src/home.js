@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Nav from "./components/nav";
 import My from "./components/my";
 import { Link } from "react-router-dom";
@@ -9,30 +9,50 @@ import SideNav from "./components/sideNav";
 
 function Home() {
   const scrollContainer = useRef();
+  const [scrollEvent, setScrollEvent] = useState(false);
   let scrollCount = 0;
-  let scrollMove = 0;
+  let scrollMove = window.innerWidth;
 
-  console.log(scrollContainer);
-
-  const wheelEvent = (e) => {
+  async function wheelEvent(e) {
     e.preventDefault();
+    if (scrollEvent === false) {
+      ScrollHandler(e);
+    }
+
+    console.log(scrollCount, scrollMove);
+  }
+
+  function ScrollHandler(e) {
     if (e.deltaY > 0) {
-      scrollContainer.current.scrollLeft += window.outerWidth;
+      scrollContainer.current.scrollLeft += window.innerWidth;
       if (scrollCount >= 0 && scrollCount <= 2) {
         scrollCount++;
+        scrollMove += scrollCount * window.innerWidth;
       }
-    } else {
-      scrollContainer.current.scrollLeft -= window.outerWidth;
+    } else if (e.deltaY < 0) {
+      scrollContainer.current.scrollLeft -= window.innerWidth;
       if (scrollCount > 0 && scrollCount <= 3) {
         scrollCount--;
+        scrollMove -= scrollCount * window.innerWidth;
       }
     }
-    console.log(scrollCount);
-  };
+
+    if (scrollCount === 0) {
+      scrollMove = window.innerWidth;
+    }
+  }
 
   return (
     <>
-      <div ref={scrollContainer} onWheel={wheelEvent} className="container">
+      <div
+        ref={scrollContainer}
+        onWheel={() => {
+          setTimeout(() => {
+            wheelEvent();
+          }, 100);
+        }}
+        className="container"
+      >
         <Nav />
         <SideNav />
         <div className="scroll my">
