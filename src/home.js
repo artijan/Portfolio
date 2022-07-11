@@ -6,74 +6,76 @@ import Career from "./components/career";
 import Career2 from "./components/carrer2";
 import Career3 from "./components/career3";
 import SideNav from "./components/sideNav";
+import userEvent from "@testing-library/user-event";
 
 function Home() {
-  const scrollContainer = useRef();
-  const [scrollEvent, setScrollEvent] = useState(false);
-  let scrollCount = 0;
-  let scrollMove = window.innerWidth;
+  const scrollContainer1 = useRef();
+  const scrollContainer2 = useRef();
+  const scrollContainer3 = useRef();
+  const scrollContainer4 = useRef();
+  const windowWidth = 0;
+
+  let scrollCount = 1;
+  let scrollMove = 0;
+
+  console.log(windowWidth);
 
   async function wheelEvent(e) {
     e.preventDefault();
-    if (scrollEvent === false) {
-      ScrollHandler(e);
-    }
-
-    console.log(scrollCount, scrollMove);
+    ScrollHandler(e);
   }
 
   function ScrollHandler(e) {
+    const windowWidth = scrollContainer1.current.clientWidth;
+
     if (e.deltaY > 0) {
-      scrollContainer.current.scrollLeft += window.innerWidth;
+      let moveWidth = scrollCount * windowWidth;
+      scrollContainer1.current.style.transform = `translateX(${-moveWidth}px)`;
+      scrollContainer2.current.style.transform = `translateX(${-moveWidth}px)`;
+      scrollContainer3.current.style.transform = `translateX(${-moveWidth}px)`;
+      scrollContainer4.current.style.transform = `translateX(${-moveWidth}px)`;
+
       if (scrollCount >= 0 && scrollCount <= 2) {
         scrollCount++;
-        scrollMove += scrollCount * window.innerWidth;
       }
-    } else if (e.deltaY < 0) {
-      scrollContainer.current.scrollLeft -= window.innerWidth;
+    } else {
+      let moveWidth = -scrollCount * windowWidth;
+      scrollContainer1.current.style.transform = `translateX(${moveWidth}px)`;
+      scrollContainer2.current.style.transform = `translateX(${moveWidth}px)`;
+      scrollContainer3.current.style.transform = `translateX(${moveWidth}px)`;
+      scrollContainer4.current.style.transform = `translateX(${moveWidth}px)`;
       if (scrollCount > 0 && scrollCount <= 3) {
         scrollCount--;
-        scrollMove -= scrollCount * window.innerWidth;
       }
-    }
-
-    if (scrollCount === 0) {
-      scrollMove = window.innerWidth;
     }
   }
 
   return (
     <>
-      <div
-        ref={scrollContainer}
-        onWheel={() => {
-          setTimeout(() => {
-            wheelEvent();
-          }, 100);
-        }}
-        className="container"
-      >
+      <div onWheel={wheelEvent} className="container">
         <Nav />
         <SideNav />
-        <div className="scroll my">
-          <My />
-        </div>
+        <div className="scrollContainer">
+          <div ref={scrollContainer1} className="scroll my">
+            <My />
+          </div>
 
-        <Link to="/detail">
-          <div className="scroll detail ">
-            <Career name="Product Information Design" />
-          </div>
-        </Link>
-        <Link to="/guide">
-          <div className="scroll guide ">
-            <Career2 name="Shopping Guide Design" />
-          </div>
-        </Link>
-        <Link to="/shopping">
-          <div className="scroll shopping ">
-            <Career3 name="Event Page Design" />
-          </div>
-        </Link>
+          <Link to="/detail">
+            <div ref={scrollContainer2} className="scroll detail ">
+              <Career name="Product Information Design" />
+            </div>
+          </Link>
+          <Link to="/guide">
+            <div ref={scrollContainer3} className="scroll guide ">
+              <Career2 name="Shopping Guide Design" />
+            </div>
+          </Link>
+          <Link to="/shopping">
+            <div ref={scrollContainer4} className="scroll shopping ">
+              <Career3 name="Event Page Design" />
+            </div>
+          </Link>
+        </div>
       </div>
     </>
   );
