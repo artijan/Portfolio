@@ -12,47 +12,67 @@ function Home() {
   const scrollContainer2 = useRef();
   const scrollContainer3 = useRef();
   const scrollContainer4 = useRef();
-  const windowWidth = 0;
+  let windowWidth = 0;
+  let moveWidth = 0;
 
   let scrollCount = 1;
-  let scrollMove = 0;
 
-  async function wheelEvent(e) {
+  function wheelEvent(e) {
     e.preventDefault();
     ScrollHandler(e);
   }
 
-  function ScrollHandler(e) {
-    const windowWidth = scrollContainer1.current.clientWidth;
+  const minusMove = function (
+    scrollCount,
+    scrollContainer1,
+    scrollContainer2,
+    scrollContainer3,
+    scrollContainer4
+  ) {
+    return new Promise((resolve) => {
+      resolve(
+        (scrollContainer1.current.style.transform = `translateX(${-moveWidth}px)`),
+        (scrollContainer2.current.style.transform = `translateX(${-moveWidth}px)`),
+        (scrollContainer3.current.style.transform = `translateX(${-moveWidth}px)`),
+        (scrollContainer4.current.style.transform = `translateX(${-moveWidth}px)`),
+        scrollCount++
+      );
+    });
+  };
+
+  async function ScrollHandler(e) {
+    windowWidth = scrollContainer1.current.clientWidth;
 
     if (e.deltaY > 0) {
-      if (scrollCount >= 0 && scrollCount < 3) {
-        let moveWidth = scrollCount * windowWidth;
-        scrollContainer1.current.style.transform = `translateX(${-moveWidth}px)`;
-        scrollContainer2.current.style.transform = `translateX(${-moveWidth}px)`;
-        scrollContainer3.current.style.transform = `translateX(${-moveWidth}px)`;
-        scrollContainer4.current.style.transform = `translateX(${-moveWidth}px)`;
-
-        setTimeout(() => {
-          return (scrollCount = scrollCount + 1);
-        }, 1000);
+      if (scrollCount >= 1 && scrollCount < 4) {
+        moveWidth = scrollCount * windowWidth;
+        await minusMove(
+          scrollCount,
+          scrollContainer1,
+          scrollContainer2,
+          scrollContainer3,
+          scrollContainer4
+        );
       }
     } else {
-      if (scrollCount > 0 && scrollCount <= 3) {
-        let moveWidth = (scrollCount - 1) * -windowWidth;
-        scrollContainer1.current.style.transform = `translateX(${moveWidth}px)`;
-        scrollContainer2.current.style.transform = `translateX(${moveWidth}px)`;
-        scrollContainer3.current.style.transform = `translateX(${moveWidth}px)`;
-        scrollContainer4.current.style.transform = `translateX(${moveWidth}px)`;
+      if (scrollCount > 1 && scrollCount <= 4) {
+        if (scrollCount === 1) {
+          scrollContainer1.current.scrollLeft = 0;
+          // scrollContainer2.current.scrollLeft = 0;
+          // scrollContainer3.current.scrollLeft = 0;
+          // scrollContainer4.current.scrollLeft = 0;
+        } else {
+          moveWidth = (scrollCount - 1) * windowWidth;
+          scrollContainer1.current.style.transform = `translateX(${moveWidth}px)`;
+          scrollContainer2.current.style.transform = `translateX(${moveWidth}px)`;
+          scrollContainer3.current.style.transform = `translateX(${moveWidth}px)`;
+          scrollContainer4.current.style.transform = `translateX(${moveWidth}px)`;
+        }
 
-        setTimeout(() => {
-          return (scrollCount -= 1);
-        }, 1000);
+        scrollCount--;
       }
     }
   }
-
-  console.log(scrollCount);
 
   return (
     <>
