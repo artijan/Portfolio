@@ -6,7 +6,6 @@ import Career from "./components/career";
 import Career2 from "./components/carrer2";
 import Career3 from "./components/career3";
 import SideNav from "./components/sideNav";
-import userEvent from "@testing-library/user-event";
 
 function Home() {
   const scrollContainer1 = useRef();
@@ -18,8 +17,6 @@ function Home() {
   let scrollCount = 1;
   let scrollMove = 0;
 
-  console.log(windowWidth);
-
   async function wheelEvent(e) {
     e.preventDefault();
     ScrollHandler(e);
@@ -29,26 +26,33 @@ function Home() {
     const windowWidth = scrollContainer1.current.clientWidth;
 
     if (e.deltaY > 0) {
-      let moveWidth = scrollCount * windowWidth;
-      scrollContainer1.current.style.transform = `translateX(${-moveWidth}px)`;
-      scrollContainer2.current.style.transform = `translateX(${-moveWidth}px)`;
-      scrollContainer3.current.style.transform = `translateX(${-moveWidth}px)`;
-      scrollContainer4.current.style.transform = `translateX(${-moveWidth}px)`;
+      if (scrollCount >= 0 && scrollCount < 3) {
+        let moveWidth = scrollCount * windowWidth;
+        scrollContainer1.current.style.transform = `translateX(${-moveWidth}px)`;
+        scrollContainer2.current.style.transform = `translateX(${-moveWidth}px)`;
+        scrollContainer3.current.style.transform = `translateX(${-moveWidth}px)`;
+        scrollContainer4.current.style.transform = `translateX(${-moveWidth}px)`;
 
-      if (scrollCount >= 0 && scrollCount <= 2) {
-        scrollCount++;
+        setTimeout(() => {
+          return (scrollCount = scrollCount + 1);
+        }, 1000);
       }
     } else {
-      let moveWidth = -scrollCount * windowWidth;
-      scrollContainer1.current.style.transform = `translateX(${moveWidth}px)`;
-      scrollContainer2.current.style.transform = `translateX(${moveWidth}px)`;
-      scrollContainer3.current.style.transform = `translateX(${moveWidth}px)`;
-      scrollContainer4.current.style.transform = `translateX(${moveWidth}px)`;
       if (scrollCount > 0 && scrollCount <= 3) {
-        scrollCount--;
+        let moveWidth = (scrollCount - 1) * -windowWidth;
+        scrollContainer1.current.style.transform = `translateX(${moveWidth}px)`;
+        scrollContainer2.current.style.transform = `translateX(${moveWidth}px)`;
+        scrollContainer3.current.style.transform = `translateX(${moveWidth}px)`;
+        scrollContainer4.current.style.transform = `translateX(${moveWidth}px)`;
+
+        setTimeout(() => {
+          return (scrollCount -= 1);
+        }, 1000);
       }
     }
   }
+
+  console.log(scrollCount);
 
   return (
     <>
