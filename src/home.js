@@ -12,64 +12,44 @@ function Home() {
   const scrollContainer2 = useRef();
   const scrollContainer3 = useRef();
   const scrollContainer4 = useRef();
+
   let windowWidth = 0;
   let moveWidth = 0;
 
-  let scrollCount = 1;
+  let scrollCountRight = 1;
+  let scrollCountLeft = 1;
 
-  function wheelEvent(e) {
+  async function wheelEvent(e) {
     e.preventDefault();
-    ScrollHandler(e);
-  }
-
-  const minusMove = function (
-    scrollCount,
-    scrollContainer1,
-    scrollContainer2,
-    scrollContainer3,
-    scrollContainer4
-  ) {
-    return new Promise((resolve) => {
-      resolve(
-        (scrollContainer1.current.style.transform = `translateX(${-moveWidth}px)`),
-        (scrollContainer2.current.style.transform = `translateX(${-moveWidth}px)`),
-        (scrollContainer3.current.style.transform = `translateX(${-moveWidth}px)`),
-        (scrollContainer4.current.style.transform = `translateX(${-moveWidth}px)`),
-        scrollCount++
-      );
-    });
-  };
-
-  async function ScrollHandler(e) {
     windowWidth = scrollContainer1.current.clientWidth;
 
+    console.log(e.deltaY);
+    console.log(scrollCountRight, scrollCountLeft);
+    console.log(scrollContainer2.current.scrollLeft);
+
     if (e.deltaY > 0) {
-      if (scrollCount >= 1 && scrollCount < 4) {
-        moveWidth = scrollCount * windowWidth;
-        await minusMove(
-          scrollCount,
-          scrollContainer1,
-          scrollContainer2,
-          scrollContainer3,
-          scrollContainer4
-        );
+      moveWidth = scrollCountRight * windowWidth;
+
+      if (scrollCountRight >= 1 && scrollCountRight < 4) {
+        scrollContainer1.current.style.transform = `translateX(${-moveWidth}px)`;
+        scrollContainer2.current.style.transform = `translateX(${-moveWidth}px)`;
+        scrollContainer3.current.style.transform = `translateX(${-moveWidth}px)`;
+        scrollContainer4.current.style.transform = `translateX(${-moveWidth}px)`;
+
+        scrollCountRight++;
+      } else if (scrollCountRight === 4) {
+        scrollCountRight = 4;
+        scrollCountLeft = scrollCountRight;
       }
     } else {
-      if (scrollCount > 1 && scrollCount <= 4) {
-        if (scrollCount === 1) {
-          scrollContainer1.current.scrollLeft = 0;
-          // scrollContainer2.current.scrollLeft = 0;
-          // scrollContainer3.current.scrollLeft = 0;
-          // scrollContainer4.current.scrollLeft = 0;
-        } else {
-          moveWidth = (scrollCount - 1) * windowWidth;
-          scrollContainer1.current.style.transform = `translateX(${moveWidth}px)`;
-          scrollContainer2.current.style.transform = `translateX(${moveWidth}px)`;
-          scrollContainer3.current.style.transform = `translateX(${moveWidth}px)`;
-          scrollContainer4.current.style.transform = `translateX(${moveWidth}px)`;
-        }
+      moveWidth = (scrollCountLeft - 1) * windowWidth;
+      if (scrollCountLeft >= 2 && scrollCountLeft <= 4) {
+        scrollContainer1.current.style.transform = `translateX(${moveWidth}px)`;
+        scrollContainer2.current.style.transform = `translateX(${moveWidth}px)`;
+        scrollContainer3.current.style.transform = `translateX(${moveWidth}px)`;
+        scrollContainer4.current.style.transform = `translateX(${moveWidth}px)`;
 
-        scrollCount--;
+        scrollCountLeft--;
       }
     }
   }
