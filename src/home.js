@@ -8,6 +8,7 @@ import Career3 from "./components/career3";
 import SideNav from "./components/sideNav";
 
 function Home() {
+  const scrollContainer = useRef();
   const scrollContainer1 = useRef();
   const scrollContainer2 = useRef();
   const scrollContainer3 = useRef();
@@ -16,47 +17,49 @@ function Home() {
   let windowWidth = 0;
   let moveWidth = 0;
 
-  let scrollCountRight = 1;
-  let scrollCountLeft = 1;
+  let scrollCount = 1;
 
   async function wheelEvent(e) {
     e.preventDefault();
     windowWidth = scrollContainer1.current.clientWidth;
 
-    console.log(e.deltaY);
-    console.log(scrollCountRight, scrollCountLeft);
-    console.log(scrollContainer2.current.scrollLeft);
+    console.log(windowWidth);
+    console.log(scrollCount);
+    console.log(scrollContainer);
 
     if (e.deltaY > 0) {
-      moveWidth = scrollCountRight * windowWidth;
+      // moveWidth = scrollCount * windowWidth;
+      scrollContainer1.current.scrollLeft += windowWidth;
+      scrollContainer2.current.scrollLeft += windowWidth;
+      scrollContainer3.current.scrollLeft += windowWidth;
+      scrollContainer4.current.scrollLeft += windowWidth;
 
-      if (scrollCountRight >= 1 && scrollCountRight < 4) {
-        scrollContainer1.current.style.transform = `translateX(${-moveWidth}px)`;
-        scrollContainer2.current.style.transform = `translateX(${-moveWidth}px)`;
-        scrollContainer3.current.style.transform = `translateX(${-moveWidth}px)`;
-        scrollContainer4.current.style.transform = `translateX(${-moveWidth}px)`;
+      // if (scrollCount >= 1 && scrollCount < 4) {
+      //   scrollContainer1.current.style.transform = `translateX(${-moveWidth}px)`;
+      //   scrollContainer2.current.style.transform = `translateX(${-moveWidth}px)`;
+      //   scrollContainer3.current.style.transform = `translateX(${-moveWidth}px)`;
+      //   scrollContainer4.current.style.transform = `translateX(${-moveWidth}px)`;
 
-        scrollCountRight++;
-      } else if (scrollCountRight === 4) {
-        scrollCountRight = 4;
-        scrollCountLeft = scrollCountRight;
-      }
+      //   scrollCount++;
+      // } else if (scrollCount === 4) {
+      //   scrollCount = 4;
+      // }
     } else {
-      moveWidth = (scrollCountLeft - 1) * windowWidth;
-      if (scrollCountLeft >= 2 && scrollCountLeft <= 4) {
+      // moveWidth = (scrollCount - 1) * windowWidth;
+      if (scrollCount >= 2 && scrollCount <= 4) {
         scrollContainer1.current.style.transform = `translateX(${moveWidth}px)`;
         scrollContainer2.current.style.transform = `translateX(${moveWidth}px)`;
         scrollContainer3.current.style.transform = `translateX(${moveWidth}px)`;
         scrollContainer4.current.style.transform = `translateX(${moveWidth}px)`;
 
-        scrollCountLeft--;
+        scrollCount--;
       }
     }
   }
 
   return (
     <>
-      <div onWheel={wheelEvent} className="container">
+      <div ref={scrollContainer} onWheel={wheelEvent} className="container">
         <Nav />
         <SideNav />
         <div className="scrollContainer">
