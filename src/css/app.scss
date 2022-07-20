@@ -19,13 +19,14 @@
 .container {
   display: flex;
 
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
-
   .scrollContainer {
     display: flex;
     flex-direction: row;
     overflow: hidden;
+
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+
     .scroll {
       scroll-snap-align: center;
       scroll-snap-stop: always;

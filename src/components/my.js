@@ -127,7 +127,7 @@ function My() {
         <Bg />
       </Canvas>
       <span className="chevron">
-        My Works Here!
+        Scroll Down!
         <span>&#129147;</span>
       </span>
     </div>

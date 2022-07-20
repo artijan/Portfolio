@@ -1,16 +1,17 @@
 import React from "react";
 
-function SideNav() {
+function SideNav(width) {
+  console.log(width);
   return (
     <div className="sideNav">
       <a href="#work1">
-        <span> Work1</span>
+        <span>Product Info</span>
       </a>
       <a href="#work2">
-        <span> Work2</span>
+        <span>Shopping Guide</span>
       </a>
       <a href="#work3">
-        <span> Work3</span>
+        <span>Event Page</span>
       </a>
     </div>
   );
