@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import Nav from "./components/nav";
 import My from "./components/my";
 import { Link } from "react-router-dom";
@@ -22,7 +22,7 @@ function Home() {
     e.preventDefault();
     windowWidth = scrollContainer1.current.clientWidth;
     moveWidth = scrollCount * windowWidth;
-    console.log(scrollCount);
+    console.log(scrollCount, e.deltaY);
 
     if (e.deltaY > 0) {
       scrollContainer1.current.style.transform = `translateX(${-moveWidth}px)`;
@@ -46,7 +46,7 @@ function Home() {
         scrollContainer3.current.style.transform = `translateX(${-moveWidth}px)`;
         scrollContainer4.current.style.transform = `translateX(${-moveWidth}px)`;
       } else if (scrollCount === 3) {
-        scrollCount -= 1;
+        scrollCount--;
       } else if (scrollCount === 0) {
         scrollCount = 0;
       }
