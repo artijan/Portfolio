@@ -22,55 +22,31 @@ function Home() {
     e.preventDefault();
     windowWidth = scrollContainer1.current.clientWidth;
     moveWidth = scrollCount * windowWidth;
-    console.log(scrollCount, e.deltaY);
+    let deltaY = Math.sign(e.deltaY);
 
-    if (scrollCount >= 0 && scrollCount <= 3) {
-      if (e.deltaY > 0) {
+    console.log(scrollCount, deltaY);
+
+    if (deltaY > 0) {
+      scrollContainer1.current.style.transform = `translateX(${-moveWidth}px)`;
+      scrollContainer2.current.style.transform = `translateX(${-moveWidth}px)`;
+      scrollContainer3.current.style.transform = `translateX(${-moveWidth}px)`;
+      scrollContainer4.current.style.transform = `translateX(${-moveWidth}px)`;
+      if (scrollCount < 3) {
+        scrollCount++;
+      } else if (scrollCount === 0) {
+        scrollCount = 1;
+      }
+    } else if (deltaY < 0) {
+      moveWidth = (scrollCount - 1) * windowWidth;
+
+      if (scrollCount >= 1) {
+        scrollCount--;
         scrollContainer1.current.style.transform = `translateX(${-moveWidth}px)`;
         scrollContainer2.current.style.transform = `translateX(${-moveWidth}px)`;
         scrollContainer3.current.style.transform = `translateX(${-moveWidth}px)`;
         scrollContainer4.current.style.transform = `translateX(${-moveWidth}px)`;
-        if (scrollCount < 3) {
-          scrollCount++;
-        } else if (scrollCount === 0) {
-          scrollCount = 1;
-        }
-      } else {
-        moveWidth = (scrollCount - 1) * windowWidth;
-
-        if (scrollCount >= 1) {
-          scrollCount--;
-          scrollContainer1.current.style.transform = `translateX(${-moveWidth}px)`;
-          scrollContainer2.current.style.transform = `translateX(${-moveWidth}px)`;
-          scrollContainer3.current.style.transform = `translateX(${-moveWidth}px)`;
-          scrollContainer4.current.style.transform = `translateX(${-moveWidth}px)`;
-        } else if (scrollCount === 0) {
-          scrollCount = 0;
-        }
       }
     }
-
-    // if (e.deltaY > 0) {
-    //   scrollContainer1.current.style.transform = `translateX(${-moveWidth}px)`;
-    //   scrollContainer2.current.style.transform = `translateX(${-moveWidth}px)`;
-    //   scrollContainer3.current.style.transform = `translateX(${-moveWidth}px)`;
-    //   scrollContainer4.current.style.transform = `translateX(${-moveWidth}px)`;
-    //   if (scrollCount < 3) {
-    //     scrollCount++;
-    //   } else if (scrollCount === 0) {
-    //     scrollCount = 1;
-    //   }
-    // } else if (e.deltaY < 0) {
-    //   moveWidth = (scrollCount - 1) * windowWidth;
-
-    //   if (scrollCount >= 1) {
-    //     scrollCount--;
-    //     scrollContainer1.current.style.transform = `translateX(${-moveWidth}px)`;
-    //     scrollContainer2.current.style.transform = `translateX(${-moveWidth}px)`;
-    //     scrollContainer3.current.style.transform = `translateX(${-moveWidth}px)`;
-    //     scrollContainer4.current.style.transform = `translateX(${-moveWidth}px)`;
-    //   }
-    // }
   }
 
   return (
