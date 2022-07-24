@@ -18,42 +18,44 @@ function Home() {
   let scrollCount = 0;
   let windowWidth = 0;
 
+  console.log(moveWidth);
+
   async function wheelEvent(e) {
     e.preventDefault();
     windowWidth = scrollContainer1.current.clientWidth;
     moveWidth = scrollCount * windowWidth;
     let deltaY = Math.sign(e.deltaY);
 
-    console.log(scrollCount, deltaY);
+    console.log(scrollCount, deltaY, moveWidth);
 
     if (deltaY > 0) {
       scrollContainer1.current.style.transform = `translateX(${-moveWidth}px)`;
       scrollContainer2.current.style.transform = `translateX(${-moveWidth}px)`;
       scrollContainer3.current.style.transform = `translateX(${-moveWidth}px)`;
       scrollContainer4.current.style.transform = `translateX(${-moveWidth}px)`;
-      if (scrollCount < 3) {
-        scrollCount++;
-      } else if (scrollCount === 0) {
-        scrollCount = 1;
+      scrollCount++;
+      if (scrollCount > 3) {
+        scrollCount = 3;
       }
     } else if (deltaY < 0) {
-      moveWidth = (scrollCount - 1) * windowWidth;
-
-      if (scrollCount >= 1) {
-        scrollCount--;
-        scrollContainer1.current.style.transform = `translateX(${-moveWidth}px)`;
-        scrollContainer2.current.style.transform = `translateX(${-moveWidth}px)`;
-        scrollContainer3.current.style.transform = `translateX(${-moveWidth}px)`;
-        scrollContainer4.current.style.transform = `translateX(${-moveWidth}px)`;
+      if (scrollCount <= 0) {
+        scrollCount = 1;
       }
+      scrollCount--;
+      scrollContainer1.current.style.transform = `translateX(${-moveWidth}px)`;
+      scrollContainer2.current.style.transform = `translateX(${-moveWidth}px)`;
+      scrollContainer3.current.style.transform = `translateX(${-moveWidth}px)`;
+      scrollContainer4.current.style.transform = `translateX(${-moveWidth}px)`;
     }
+
+    return moveWidth;
   }
 
   return (
     <>
       <div onWheel={wheelEvent} className="container">
         <Nav />
-        <SideNav width={windowWidth} />
+        <SideNav width={moveWidth} />
         <div ref={scrollContainer} className="scrollContainer">
           <div ref={scrollContainer1} className="scroll my">
             <My />
