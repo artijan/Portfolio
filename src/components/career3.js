@@ -1,6 +1,5 @@
 import React, { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
-import { DepthOfField, EffectComposer } from "@react-three/postprocessing";
 import Caption from "./caption";
 import Rig from "./rig";
 

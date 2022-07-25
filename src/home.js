@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Nav from "./components/nav";
 import My from "./components/my";
 import { Link } from "react-router-dom";
@@ -18,6 +18,8 @@ function Home() {
   let scrollCount = 0;
   let windowWidth = 0;
 
+  const [checkWidth, setCheckWidth] = useState(0);
+
   console.log(moveWidth);
 
   async function wheelEvent(e) {
@@ -26,7 +28,7 @@ function Home() {
     moveWidth = scrollCount * windowWidth;
     let deltaY = Math.sign(e.deltaY);
 
-    console.log(scrollCount, deltaY, moveWidth);
+    console.log(scrollCount, deltaY, moveWidth, checkWidth);
 
     if (deltaY > 0) {
       scrollContainer1.current.style.transform = `translateX(${-moveWidth}px)`;
@@ -34,21 +36,22 @@ function Home() {
       scrollContainer3.current.style.transform = `translateX(${-moveWidth}px)`;
       scrollContainer4.current.style.transform = `translateX(${-moveWidth}px)`;
       scrollCount++;
-      if (scrollCount > 3) {
+      if (scrollCount >= 3) {
         scrollCount = 3;
       }
     } else if (deltaY < 0) {
       if (scrollCount <= 0) {
-        scrollCount = 1;
+        scrollCount = 0;
+      } else if (scrollCount > 0) {
+        scrollCount--;
       }
-      scrollCount--;
       scrollContainer1.current.style.transform = `translateX(${-moveWidth}px)`;
       scrollContainer2.current.style.transform = `translateX(${-moveWidth}px)`;
       scrollContainer3.current.style.transform = `translateX(${-moveWidth}px)`;
       scrollContainer4.current.style.transform = `translateX(${-moveWidth}px)`;
     }
 
-    return moveWidth;
+    // setCheckWidth(moveWidth);
   }
 
   return (
