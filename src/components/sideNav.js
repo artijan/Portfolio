@@ -1,7 +1,6 @@
 import React from "react";
 
-function SideNav(width) {
-  console.log(width);
+function SideNav() {
   return (
     <div className="sideNav">
       <a href="#work1">

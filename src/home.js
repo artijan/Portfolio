@@ -8,19 +8,19 @@ import Career3 from "./components/career3";
 import SideNav from "./components/sideNav";
 
 function Home() {
+  let timeout;
+
   const scrollContainer = useRef();
   const scrollContainer1 = useRef();
   const scrollContainer2 = useRef();
   const scrollContainer3 = useRef();
   const scrollContainer4 = useRef();
 
+  const [scrollCheck, setScrollCheck] = useState(false);
+
   let moveWidth = 0;
   let scrollCount = 0;
   let windowWidth = 0;
-
-  const [checkWidth, setCheckWidth] = useState(0);
-
-  console.log(moveWidth);
 
   async function wheelEvent(e) {
     e.preventDefault();
@@ -28,27 +28,36 @@ function Home() {
     moveWidth = scrollCount * windowWidth;
     let deltaY = Math.sign(e.deltaY);
 
-    console.log(scrollCount, deltaY, moveWidth, checkWidth);
-
-    if (deltaY > 0) {
-      scrollContainer1.current.style.transform = `translateX(${-moveWidth}px)`;
-      scrollContainer2.current.style.transform = `translateX(${-moveWidth}px)`;
-      scrollContainer3.current.style.transform = `translateX(${-moveWidth}px)`;
-      scrollContainer4.current.style.transform = `translateX(${-moveWidth}px)`;
-      scrollCount++;
-      if (scrollCount >= 3) {
-        scrollCount = 3;
+    console.log(scrollCount, deltaY, moveWidth);
+    if (scrollCheck === false) {
+      if (deltaY > 0) {
+        timeout = setTimeout(() => {
+          scrollContainer1.current.style.transform = `translateX(${-moveWidth}px)`;
+          scrollContainer2.current.style.transform = `translateX(${-moveWidth}px)`;
+          scrollContainer3.current.style.transform = `translateX(${-moveWidth}px)`;
+          scrollContainer4.current.style.transform = `translateX(${-moveWidth}px)`;
+          if (scrollCount >= 0 && scrollCount <= 2) {
+            scrollCount++;
+          } else if (scrollCount >= 3) {
+            scrollCount = 3;
+          }
+          setScrollCheck(true);
+        }, 1000);
+      } else if (deltaY < 0) {
+        timeout = setTimeout(() => {
+          if (scrollCount > 0 && scrollCount <= 3) {
+            scrollCount--;
+          } else if (scrollCount <= 0) {
+            scrollCount = 0;
+          }
+          scrollContainer1.current.style.transform = `translateX(${-moveWidth}px)`;
+          scrollContainer2.current.style.transform = `translateX(${-moveWidth}px)`;
+          scrollContainer3.current.style.transform = `translateX(${-moveWidth}px)`;
+          scrollContainer4.current.style.transform = `translateX(${-moveWidth}px)`;
+        }, 1000);
       }
-    } else if (deltaY < 0) {
-      if (scrollCount <= 0) {
-        scrollCount = 0;
-      } else if (scrollCount > 0) {
-        scrollCount--;
-      }
-      scrollContainer1.current.style.transform = `translateX(${-moveWidth}px)`;
-      scrollContainer2.current.style.transform = `translateX(${-moveWidth}px)`;
-      scrollContainer3.current.style.transform = `translateX(${-moveWidth}px)`;
-      scrollContainer4.current.style.transform = `translateX(${-moveWidth}px)`;
+    } else {
+      clearTimeout(timeout);
     }
 
     // setCheckWidth(moveWidth);
@@ -65,17 +74,17 @@ function Home() {
           </div>
 
           <Link to="/detail">
-            <div ref={scrollContainer2} className="scroll detail ">
+            <div id="work1" ref={scrollContainer2} className="scroll detail ">
               <Career name="Product Information Design" />
             </div>
           </Link>
           <Link to="/guide">
-            <div ref={scrollContainer3} className="scroll guide ">
+            <div id="work2" ref={scrollContainer3} className="scroll guide ">
               <Career2 name="Shopping Guide Design" />
             </div>
           </Link>
           <Link to="/shopping">
-            <div ref={scrollContainer4} className="scroll shopping ">
+            <div id="work3" ref={scrollContainer4} className="scroll shopping ">
               <Career3 name="Event Page Design" />
             </div>
           </Link>
