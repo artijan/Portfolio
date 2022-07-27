@@ -8,7 +8,7 @@ import Career3 from "./components/career3";
 import SideNav from "./components/sideNav";
 
 function Home() {
-  let timeout;
+  let timeOut;
 
   const scrollContainer = useRef();
   const scrollContainer1 = useRef();
@@ -16,13 +16,13 @@ function Home() {
   const scrollContainer3 = useRef();
   const scrollContainer4 = useRef();
 
-  const [scrollCheck, setScrollCheck] = useState(false);
-
   let moveWidth = 0;
   let scrollCount = 0;
   let windowWidth = 0;
 
-  async function wheelEvent(e) {
+  let scrollCheck = false;
+
+  function WheelEvent(e) {
     e.preventDefault();
     windowWidth = scrollContainer1.current.clientWidth;
     moveWidth = scrollCount * windowWidth;
@@ -31,7 +31,8 @@ function Home() {
     console.log(scrollCount, deltaY, moveWidth);
     if (scrollCheck === false) {
       if (deltaY > 0) {
-        timeout = setTimeout(() => {
+        scrollCheck = true;
+        timeOut = setTimeout(() => {
           scrollContainer1.current.style.transform = `translateX(${-moveWidth}px)`;
           scrollContainer2.current.style.transform = `translateX(${-moveWidth}px)`;
           scrollContainer3.current.style.transform = `translateX(${-moveWidth}px)`;
@@ -41,10 +42,11 @@ function Home() {
           } else if (scrollCount >= 3) {
             scrollCount = 3;
           }
-          setScrollCheck(true);
+          scrollCheck = false;
         }, 1000);
       } else if (deltaY < 0) {
-        timeout = setTimeout(() => {
+        scrollCheck = true;
+        timeOut = setTimeout(() => {
           if (scrollCount > 0 && scrollCount <= 3) {
             scrollCount--;
           } else if (scrollCount <= 0) {
@@ -55,9 +57,11 @@ function Home() {
           scrollContainer3.current.style.transform = `translateX(${-moveWidth}px)`;
           scrollContainer4.current.style.transform = `translateX(${-moveWidth}px)`;
         }, 1000);
+        scrollCheck = false;
       }
-    } else {
-      clearTimeout(timeout);
+    } else if (scrollCheck === true) {
+      clearTimeout(timeOut);
+      scrollCheck = false;
     }
 
     // setCheckWidth(moveWidth);
@@ -65,7 +69,7 @@ function Home() {
 
   return (
     <>
-      <div onWheel={wheelEvent} className="container">
+      <div onWheel={WheelEvent} className="container">
         <Nav />
         <SideNav width={moveWidth} />
         <div ref={scrollContainer} className="scrollContainer">
