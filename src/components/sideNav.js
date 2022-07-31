@@ -3,6 +3,9 @@ import React from "react";
 function SideNav() {
   return (
     <div className="sideNav">
+      <a href="#home">
+        <span>Home</span>
+      </a>
       <a href="#work1">
         <span>Product Info</span>
       </a>

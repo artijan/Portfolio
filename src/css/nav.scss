@@ -33,11 +33,11 @@
 
 .sideNav {
   z-index: 100;
-  height: auto;
+  height: 40px;
   width: auto;
   position: fixed;
   top: 50%;
-  right: -8%;
+  right: -11%;
   transform: rotate(90deg);
 
   a {
@@ -45,6 +45,10 @@
     &:not(:last-child) {
       margin-right: 64px;
     }
+    &:focus {
+      border-bottom: 2px solid white;
+    }
+
     span {
       color: white;
     }

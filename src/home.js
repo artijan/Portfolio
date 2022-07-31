@@ -20,51 +20,43 @@ function Home() {
   let scrollCount = 0;
   let windowWidth = 0;
 
-  let scrollCheck = false;
-
   function WheelEvent(e) {
     e.preventDefault();
     windowWidth = scrollContainer1.current.clientWidth;
     moveWidth = scrollCount * windowWidth;
     let deltaY = Math.sign(e.deltaY);
 
-    console.log(scrollCount, deltaY, moveWidth);
-    if (scrollCheck === false) {
-      if (deltaY > 0) {
-        scrollCheck = true;
-        timeOut = setTimeout(() => {
-          scrollContainer1.current.style.transform = `translateX(${-moveWidth}px)`;
-          scrollContainer2.current.style.transform = `translateX(${-moveWidth}px)`;
-          scrollContainer3.current.style.transform = `translateX(${-moveWidth}px)`;
-          scrollContainer4.current.style.transform = `translateX(${-moveWidth}px)`;
-          if (scrollCount >= 0 && scrollCount <= 2) {
-            scrollCount++;
-          } else if (scrollCount >= 3) {
-            scrollCount = 3;
-          }
-          scrollCheck = false;
-        }, 1000);
-      } else if (deltaY < 0) {
-        scrollCheck = true;
-        timeOut = setTimeout(() => {
-          if (scrollCount > 0 && scrollCount <= 3) {
-            scrollCount--;
-          } else if (scrollCount <= 0) {
-            scrollCount = 0;
-          }
-          scrollContainer1.current.style.transform = `translateX(${-moveWidth}px)`;
-          scrollContainer2.current.style.transform = `translateX(${-moveWidth}px)`;
-          scrollContainer3.current.style.transform = `translateX(${-moveWidth}px)`;
-          scrollContainer4.current.style.transform = `translateX(${-moveWidth}px)`;
-        }, 1000);
-        scrollCheck = false;
-      }
-    } else if (scrollCheck === true) {
-      clearTimeout(timeOut);
-      scrollCheck = false;
-    }
+    // console.log(scrollCount, deltaY, moveWidth);
 
-    // setCheckWidth(moveWidth);
+    if (deltaY > 0 && !timeOut) {
+      timeOut = setTimeout(() => {
+        timeOut = null;
+        scrollContainer1.current.style.transform = `translateX(${-moveWidth}px)`;
+        scrollContainer2.current.style.transform = `translateX(${-moveWidth}px)`;
+        scrollContainer3.current.style.transform = `translateX(${-moveWidth}px)`;
+        scrollContainer4.current.style.transform = `translateX(${-moveWidth}px)`;
+        if (scrollCount >= 0 && scrollCount <= 2) {
+          scrollCount++;
+        } else if (scrollCount >= 3) {
+          scrollCount = 3;
+        }
+      }, 700);
+    } else if (deltaY < 0 && !timeOut) {
+      timeOut = setTimeout(() => {
+        timeOut = null;
+        if (scrollCount > 0 && scrollCount <= 3) {
+          scrollCount--;
+        } else if (scrollCount <= 0) {
+          scrollCount = 0;
+        }
+        scrollContainer1.current.style.transform = `translateX(${-moveWidth}px)`;
+        scrollContainer2.current.style.transform = `translateX(${-moveWidth}px)`;
+        scrollContainer3.current.style.transform = `translateX(${-moveWidth}px)`;
+        scrollContainer4.current.style.transform = `translateX(${-moveWidth}px)`;
+      }, 700);
+    } else {
+      return;
+    }
   }
 
   return (
@@ -73,7 +65,7 @@ function Home() {
         <Nav />
         <SideNav width={moveWidth} />
         <div ref={scrollContainer} className="scrollContainer">
-          <div ref={scrollContainer1} className="scroll my">
+          <div id="home" ref={scrollContainer1} className="scroll my">
             <My />
           </div>
 
