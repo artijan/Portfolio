@@ -5,7 +5,26 @@ import { Link } from "react-router-dom";
 import Career from "./components/career";
 import Career2 from "./components/carrer2";
 import Career3 from "./components/career3";
-import SideNav from "./components/sideNav";
+
+function SideNav(moveWidth) {
+  console.log(moveWidth);
+  return (
+    <div className="sideNav">
+      <a href="#home">
+        <span>Home</span>
+      </a>
+      <a href="#work1">
+        <span>Product Info</span>
+      </a>
+      <a href="#work2">
+        <span>Shopping Guide</span>
+      </a>
+      <a href="#work3">
+        <span>Event Page</span>
+      </a>
+    </div>
+  );
+}
 
 function Home() {
   let timeOut;
@@ -27,6 +46,8 @@ function Home() {
     let deltaY = Math.sign(e.deltaY);
 
     // console.log(scrollCount, deltaY, moveWidth);
+
+    SideNav(moveWidth);
 
     if (deltaY > 0 && !timeOut) {
       timeOut = setTimeout(() => {
@@ -63,7 +84,7 @@ function Home() {
     <>
       <div onWheel={WheelEvent} className="container">
         <Nav />
-        <SideNav width={moveWidth} />
+        <SideNav />
         <div ref={scrollContainer} className="scrollContainer">
           <div id="home" ref={scrollContainer1} className="scroll my">
             <My />

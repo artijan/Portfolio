@@ -126,10 +126,10 @@ function My() {
         <Stars />
         <Bg />
       </Canvas>
-      <span className="chevron">
+      {/* <span className="chevron">
         Scroll Down!
         <span>&#129147;</span>
-      </span>
+      </span> */}
     </div>
   );
 }
