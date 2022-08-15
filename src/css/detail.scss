@@ -1,0 +1,37 @@
+.detail_container {
+  scroll-behavior: smooth;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 200vh;
+  padding: 64px;
+  background-color: rgb(206, 223, 226);
+
+  .text-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: rgb(57, 91, 184);
+    .main {
+      font-size: 60px;
+      font-weight: 800;
+    }
+    .sub {
+      margin-top: 32px;
+      font-weight: 400;
+      font-size: 24px;
+    }
+  }
+
+  .image {
+    height: 60vh;
+    width: 90vw;
+    margin-top: 64px;
+    padding: 0 32px;
+    border-radius: 12px;
+    background-color: white;
+  }
+}
