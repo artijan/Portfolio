@@ -11,6 +11,7 @@ function Detail() {
           </div>
         </div>
         <div className="image">image1</div>
+        <div className="image">image2</div>
       </div>
     </>
   );
