@@ -30,11 +30,28 @@
   }
 
   .image {
-    height: 60vh;
     width: 90vw;
+    height: fit-content;
     margin-top: 64px;
     padding: 0 32px;
-    border-radius: 12px;
-    background-color: white;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 100%;
+      background-color: white;
+      border-radius: 12px;
+    }
+    .image-text {
+      margin-top: 40px;
+      width: 100%;
+      font-size: 16px;
+      font-weight: 00;
+      line-height: 1.4;
+      text-align: center;
+    }
   }
 }
