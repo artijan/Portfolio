@@ -28,9 +28,9 @@ function Detail() {
         </div>
 
         <Parallax
-          translateX={["-1600px", "1200px", "easeInOut"]}
-          speed="-5"
-          opacity={[0, 2]}
+          translateY={["500px", "-300px", "easeInOut"]}
+          speed="100"
+          opacity={[0, 1]}
         >
           <div className="image">
             <img src="images/page1_brief.jpg" alt="" />
