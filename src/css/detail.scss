@@ -55,3 +55,26 @@
     }
   }
 }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  width: 90vw;
+  height: fit-content;
+  margin-top: 64px;
+
+  img {
+    width: 100%;
+    background-color: white;
+    border-radius: 12px;
+  }
+  .image-text {
+    margin-top: 40px;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 00;
+    line-height: 1.4;
+    text-align: center;
+  }
+}
