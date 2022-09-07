@@ -9,7 +9,7 @@ import Career3 from "./components/career3";
 function SideNav(moveWidth) {
   console.log(moveWidth);
   return (
-    <div className="sideNav">
+    <div className="sideNav ">
       <a href="#home">
         <span>Home</span>
       </a>
@@ -87,7 +87,7 @@ function Home() {
         <SideNav />
         <div ref={scrollContainer} className="scrollContainer">
           <div id="home" ref={scrollContainer1} className="scroll my">
-            <My />
+            <My data-scroll-section />
           </div>
 
           <Link to="/detail">
