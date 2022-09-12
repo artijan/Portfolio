@@ -5,8 +5,8 @@ import Home from "./home";
 import Detail from "./detail";
 import Guide from "./guide";
 import Shopping from "./shopping";
-import "./css/app.scss";
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
+import "./css/app.scss";
 
 function App() {
   const containerRef = useRef(null);

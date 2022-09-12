@@ -87,7 +87,7 @@ function Home() {
         <SideNav />
         <div ref={scrollContainer} className="scrollContainer">
           <div id="home" ref={scrollContainer1} className="scroll my">
-            <My data-scroll-section />
+            <My />
           </div>
 
           <Link to="/detail">
