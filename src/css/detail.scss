@@ -7,18 +7,18 @@
   width: 100%;
   height: 500vh;
   padding: 64px;
-  background-color: rgb(234, 242, 243);
+  background-color: whitesmoke;
+  color: rgb(27, 67, 119);
 
   .text-main {
+    padding: 24px 72px 0px 72px;
     width: 100%;
-    display: grid;
-    justify-content: center;
+    display: flex;
     align-items: center;
-    grid-template-columns: repeat(2, 1fr);
-    color: rgb(57, 91, 184);
+
     .main {
       text-align: center;
-      font-size: 60px;
+      font-size: 70px;
       font-weight: 800;
     }
     .sub {
@@ -32,7 +32,7 @@
   .image {
     width: 90vw;
     height: fit-content;
-    margin-top: 64px;
+    margin-top: 80px;
     padding: 0 32px;
 
     display: flex;

@@ -1,41 +1,16 @@
-import React, { useEffect } from "react";
-import { useLocomotiveScroll } from "react-locomotive-scroll";
+import React from "react";
 
 function Detail() {
-  const { scroll } = useLocomotiveScroll();
-
-  console.log(scroll);
-
   return (
     <>
       <div data-scroll-section className="detail_container">
         <div className="text-main">
-          <div data-scroll className="main">
-            상세이미지 디자인
-          </div>
-          <div data-scroll className="sub">
-            컨텐츠 계약업체 관리,
-            <br />
-            제품 입/출고 관리 및 촬영,
-            <br />
-            컴퓨터 카테고리 제품 상세이미지 제작
-          </div>
+          <div className="main">상세이미지 디자인</div>
         </div>
 
-        <div className="image">
-          <img
-            data-scroll
-            data-scroll-speed="2"
-            data-scroll-delay="0.2"
-            src="images/page1_brief.jpg"
-            alt=""
-          />
-          <div
-            data-scroll
-            data-scroll-speed="1"
-            data-scroll-delay="0.3"
-            className="image-text"
-          >
+        <div data-scroll data-scroll-speed="2" className="image">
+          <img src="images/page1_brief.jpg" alt="" />
+          <div data-scroll data-scroll-speed="0.5" className="image-text">
             컨텐츠 계약 업체 관리/커뮤니케이션을 포함하여, 상세이미지 제작에
             필요한 실 제품의 입/출고 관리를 진행하였습니다.
             <br />
@@ -44,9 +19,9 @@ function Detail() {
           </div>
         </div>
 
-        <div className="image">
-          <img data-scroll-speed="2" src="images/page1_brief.jpg" alt="" />
-          <div data-scroll-speed="2" className="image-text">
+        <div data-scroll data-scroll-speed="0.5" className="image">
+          <img src="images/page1_brief.jpg" alt="" />
+          <div className="image-text">
             컨텐츠 계약 업체 관리/커뮤니케이션을 포함하여, 상세이미지 제작에
             필요한 실 제품의 입/출고 관리를 진행하였습니다.
             <br />
@@ -55,13 +30,13 @@ function Detail() {
           </div>
         </div>
 
-        <div className="image">
-          <div
-            data-scroll
-            data-scroll-direction="horizontal"
-            data-scroll-speed="2"
-            className="grid"
-          >
+        <div
+          data-scroll
+          data-scroll-speed="2"
+          data-scroll-direction="horizontal"
+          className="image"
+        >
+          <div className="grid">
             <img src="images/page1_brief.jpg" alt="" />
             <img src="images/page1_brief.jpg" alt="" />
             <img src="images/page1_brief.jpg" alt="" />
@@ -70,7 +45,7 @@ function Detail() {
             <img src="images/page1_brief.jpg" alt="" />
           </div>
 
-          <div data-scroll className="image-text">
+          <div className="image-text">
             컨텐츠 계약 업체 관리/커뮤니케이션을 포함하여, 상세이미지 제작에
             필요한 실 제품의 입/출고 관리를 진행하였습니다.
             <br />
