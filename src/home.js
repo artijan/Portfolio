@@ -26,6 +26,19 @@ function SideNav(moveWidth) {
   );
 }
 
+function MoveX(
+  scrollContainer1,
+  scrollContainer2,
+  scrollContainer3,
+  scrollContainer4,
+  moveWidth
+) {
+  scrollContainer1.current.style.transform = `translateX(${-moveWidth}px)`;
+  scrollContainer2.current.style.transform = `translateX(${-moveWidth}px)`;
+  scrollContainer3.current.style.transform = `translateX(${-moveWidth}px)`;
+  scrollContainer4.current.style.transform = `translateX(${-moveWidth}px)`;
+}
+
 function Home() {
   let timeOut;
 
@@ -39,44 +52,52 @@ function Home() {
   let scrollCount = 0;
   let windowWidth = 0;
 
-  function WheelEvent(e) {
+  async function WheelEvent(e) {
     e.preventDefault();
     windowWidth = scrollContainer1.current.clientWidth;
     moveWidth = scrollCount * windowWidth;
     let deltaY = Math.sign(e.deltaY);
 
-    // console.log(scrollCount, deltaY, moveWidth);
+    console.log(scrollCount, deltaY, moveWidth);
 
     SideNav(moveWidth);
-
-    if (deltaY > 0 && !timeOut) {
-      timeOut = setTimeout(() => {
-        timeOut = null;
-        scrollContainer1.current.style.transform = `translateX(${-moveWidth}px)`;
-        scrollContainer2.current.style.transform = `translateX(${-moveWidth}px)`;
-        scrollContainer3.current.style.transform = `translateX(${-moveWidth}px)`;
-        scrollContainer4.current.style.transform = `translateX(${-moveWidth}px)`;
-        if (scrollCount >= 0 && scrollCount <= 2) {
-          scrollCount++;
-        } else if (scrollCount >= 3) {
-          scrollCount = 3;
-        }
-      }, 700);
-    } else if (deltaY < 0 && !timeOut) {
-      timeOut = setTimeout(() => {
-        timeOut = null;
-        if (scrollCount > 0 && scrollCount <= 3) {
-          scrollCount--;
-        } else if (scrollCount <= 0) {
-          scrollCount = 0;
-        }
-        scrollContainer1.current.style.transform = `translateX(${-moveWidth}px)`;
-        scrollContainer2.current.style.transform = `translateX(${-moveWidth}px)`;
-        scrollContainer3.current.style.transform = `translateX(${-moveWidth}px)`;
-        scrollContainer4.current.style.transform = `translateX(${-moveWidth}px)`;
-      }, 700);
-    } else {
-      return;
+    try {
+      if (!timeOut) {
+        timeOut = setTimeout(() => {
+          timeOut = null;
+          if (deltaY > 0) {
+            if (scrollCount >= 0 && scrollCount <= 2) {
+              scrollCount++;
+            } else if (scrollCount >= 3) {
+              scrollCount = 3;
+            }
+            MoveX(
+              scrollContainer1,
+              scrollContainer2,
+              scrollContainer3,
+              scrollContainer4,
+              moveWidth
+            );
+          } else if (deltaY < 0) {
+            if (scrollCount > 0 && scrollCount <= 3) {
+              scrollCount--;
+            } else if (scrollCount <= 0) {
+              scrollCount = 0;
+            }
+            MoveX(
+              scrollContainer1,
+              scrollContainer2,
+              scrollContainer3,
+              scrollContainer4,
+              moveWidth
+            );
+          }
+        }, 700);
+      } else {
+        return;
+      }
+    } catch (e) {
+      console.log(e);
     }
   }
 
