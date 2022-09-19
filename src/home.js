@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import Nav from "./components/nav";
 import My from "./components/my";
 import { Link } from "react-router-dom";
@@ -7,7 +7,6 @@ import Career2 from "./components/carrer2";
 import Career3 from "./components/career3";
 
 function SideNav(moveWidth) {
-  console.log(moveWidth);
   return (
     <div className="sideNav ">
       <a href="#home">
@@ -56,49 +55,52 @@ function Home() {
     e.preventDefault();
     windowWidth = scrollContainer1.current.clientWidth;
     moveWidth = scrollCount * windowWidth;
-    let deltaY = Math.sign(e.deltaY);
+    let deltaY = e.deltaY;
+
+    useEffect(() => {
+      try {
+        if (!timeOut) {
+          timeOut = setTimeout(() => {
+            timeOut = null;
+            if (deltaY > 0) {
+              if (scrollCount >= 0 && scrollCount <= 2) {
+                scrollCount++;
+              } else if (scrollCount >= 3) {
+                scrollCount = 3;
+              }
+              MoveX(
+                scrollContainer1,
+                scrollContainer2,
+                scrollContainer3,
+                scrollContainer4,
+                moveWidth
+              );
+            } else if (deltaY < 0) {
+              if (scrollCount > 0 && scrollCount <= 3) {
+                scrollCount--;
+              } else if (scrollCount <= 0) {
+                scrollCount = 0;
+              }
+              MoveX(
+                scrollContainer1,
+                scrollContainer2,
+                scrollContainer3,
+                scrollContainer4,
+                moveWidth
+              );
+            }
+          }, 1000);
+        } else {
+          return;
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    }, [deltaY]);
 
     console.log(scrollCount, deltaY, moveWidth);
 
     SideNav(moveWidth);
-    try {
-      if (!timeOut) {
-        timeOut = setTimeout(() => {
-          timeOut = null;
-          if (deltaY > 0) {
-            if (scrollCount >= 0 && scrollCount <= 2) {
-              scrollCount++;
-            } else if (scrollCount >= 3) {
-              scrollCount = 3;
-            }
-            MoveX(
-              scrollContainer1,
-              scrollContainer2,
-              scrollContainer3,
-              scrollContainer4,
-              moveWidth
-            );
-          } else if (deltaY < 0) {
-            if (scrollCount > 0 && scrollCount <= 3) {
-              scrollCount--;
-            } else if (scrollCount <= 0) {
-              scrollCount = 0;
-            }
-            MoveX(
-              scrollContainer1,
-              scrollContainer2,
-              scrollContainer3,
-              scrollContainer4,
-              moveWidth
-            );
-          }
-        }, 700);
-      } else {
-        return;
-      }
-    } catch (e) {
-      console.log(e);
-    }
   }
 
   return (
