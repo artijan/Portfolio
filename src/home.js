@@ -57,46 +57,44 @@ function Home() {
     moveWidth = scrollCount * windowWidth;
     let deltaY = e.deltaY;
 
-    useEffect(() => {
-      try {
-        if (!timeOut) {
-          timeOut = setTimeout(() => {
-            timeOut = null;
-            if (deltaY > 0) {
-              if (scrollCount >= 0 && scrollCount <= 2) {
-                scrollCount++;
-              } else if (scrollCount >= 3) {
-                scrollCount = 3;
-              }
-              MoveX(
-                scrollContainer1,
-                scrollContainer2,
-                scrollContainer3,
-                scrollContainer4,
-                moveWidth
-              );
-            } else if (deltaY < 0) {
-              if (scrollCount > 0 && scrollCount <= 3) {
-                scrollCount--;
-              } else if (scrollCount <= 0) {
-                scrollCount = 0;
-              }
-              MoveX(
-                scrollContainer1,
-                scrollContainer2,
-                scrollContainer3,
-                scrollContainer4,
-                moveWidth
-              );
+    try {
+      if (!timeOut) {
+        timeOut = setTimeout(() => {
+          timeOut = null;
+          if (deltaY > 0) {
+            if (scrollCount >= 0 && scrollCount <= 2) {
+              scrollCount++;
+            } else if (scrollCount >= 3) {
+              scrollCount = 3;
             }
-          }, 1000);
-        } else {
-          return;
-        }
-      } catch (e) {
-        console.log(e);
+            MoveX(
+              scrollContainer1,
+              scrollContainer2,
+              scrollContainer3,
+              scrollContainer4,
+              moveWidth
+            );
+          } else if (deltaY < 0) {
+            if (scrollCount > 0 && scrollCount <= 3) {
+              scrollCount--;
+            } else if (scrollCount <= 0) {
+              scrollCount = 0;
+            }
+            MoveX(
+              scrollContainer1,
+              scrollContainer2,
+              scrollContainer3,
+              scrollContainer4,
+              moveWidth
+            );
+          }
+        }, 1000);
+      } else {
+        return;
       }
-    }, [deltaY]);
+    } catch (e) {
+      console.log(e);
+    }
 
     console.log(scrollCount, deltaY, moveWidth);
 

@@ -47,7 +47,7 @@ function My() {
             position={[-1, 0, 0]}
             lineHeight="1"
             fontSize="12"
-          >{`HELLO WORLD!`}</Caption>
+          >{`CONTENTS DESINGER`}</Caption>
 
           <AniSphere
             color="#6254C6"

@@ -6,76 +6,83 @@
   align-items: center;
   width: 100%;
   height: 500vh;
-  padding: 64px;
-  background-color: white;
-  color: rgb(27, 67, 119);
+  padding-top: 128px;
+  background-color: rgb(31, 20, 94);
+  color: rgb(160, 196, 226);
 
-  .text-main {
-    padding: 24px 72px 0px 72px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-
-    .main {
-      text-align: center;
-      font-size: 70px;
-      font-weight: 800;
-    }
-    .sub {
-      margin-left: 48px;
-      font-weight: 400;
-      font-size: 24px;
-      line-height: 1.5;
-    }
-  }
-
-  .image {
-    width: 90vw;
-    height: fit-content;
-    margin-top: 80px;
-    padding: 0 32px;
-
+  .detail_wrapper {
+    width: 1600px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-
-    img {
+    .text-main {
       width: 100%;
-      background-color: white;
-      border-radius: 12px;
-      border: 1px solid rgb(200, 216, 236);
+      display: flex;
+      align-items: center;
+
+      .main {
+        text-align: center;
+        font-size: 80px;
+        font-weight: 800;
+      }
+      .sub {
+        margin-left: 48px;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 1.5;
+      }
     }
-    .image-text {
-      margin-top: 40px;
+
+    .image {
       width: 100%;
-      font-size: 18px;
-      font-weight: 600;
-      line-height: 1.8;
-      text-align: center;
-    }
-  }
+      height: fit-content;
+      margin-top: 80px;
 
-  .images {
-    position: relative;
-    width: 90vw;
-    height: 150vh;
-    margin-top: 64px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
 
-    img {
-      position: absolute;
-      width: 30vw;
-      height: 60vh;
-      background-color: white;
-      border-radius: 12px;
+      img {
+        width: 100%;
+        background-color: white;
+        border-radius: 12px;
+        border: 1px solid rgb(200, 216, 236);
+      }
+      .image-text {
+        margin-top: 40px;
+        width: 100%;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 1.8;
+        text-align: center;
+      }
     }
-    .img1 {
-      bottom: 50%;
-      left: 60%;
-    }
-    .img2 {
-      bottom: 10%;
-      left: 30%;
+
+    .float_image {
+      width: 100%;
+      .images {
+        position: relative;
+        width: 90vw;
+        height: 150vh;
+        margin-top: 64px;
+
+        img {
+          position: absolute;
+          width: 30vw;
+          height: 60vh;
+          background-color: white;
+          border-radius: 12px;
+        }
+        .img1 {
+          bottom: 50%;
+          left: 60%;
+        }
+        .img2 {
+          bottom: 10%;
+          left: 30%;
+        }
+      }
     }
   }
 }
